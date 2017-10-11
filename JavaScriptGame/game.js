@@ -1,6 +1,7 @@
 // Variables to be used
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+var name = "";
 
 // This is the initial function when the game begins
 $(document).ready(function() {
@@ -14,10 +15,43 @@ $(document).ready(function() {
 	ctx.fillText("Please enter your name", canvas.width/2, canvas.height/2);
 	ctx.font = "20px Helvetica";
 	ctx.fillText("No longer than 30 characters please", canvas.width/2, (canvas.height/2)+35);
-	ctx.fillRect(425, 600, 150, 50);
-	ctx.fillStyle = "White";
-	ctx.fillText("Submit", canvas.width/2, 625);
+	
+	// To signify you have entered the submit button
+	$("#nameSubmit").mouseenter(function(){
+		$("#nameSubmit").css("background-color", "White");
+		$("#nameSubmit").css("color", "Black");
+	});
+	
+	// To return Submit button to normal
+	$("#nameSubmit").mouseleave(function(){
+		$("#nameSubmit").css("background-color", "Gold");
+		$("#nameSubmit").css("color", "rgb(75, 0, 0)");
+	});
+	
+	// When submit is clicked
+	$("#nameSubmit").click(function(){
+		// Checks for valid name
+		if ($("#nameInput").val().length === 0) {
+			alert("Please input some sort of name");
+		}
+		else if ($("#nameInput").val().length > 30) {
+			alert("That's longer than 30 characters buster!");
+		}
+		else {
+			// If name is valid, store it and move on
+			name = $("#nameInput").val();
+			$("#nameSubmit").css("visibility", "hidden");
+			$("#nameInput").css("visibility", "hidden");
+			ctx.fillStyle = "rgba(75, 0, 0, 1)";
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			coinToss();
+		}
+	});
 });
+
+function coinToss() {
+	
+}
 
 /*
 // Setting background color
