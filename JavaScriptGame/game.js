@@ -1,6 +1,26 @@
-// Setting background color
+// Variables to be used
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+
+// This is the initial function when the game begins
+$(document).ready(function() {
+	ctx.fillStyle = "rgba(75, 0, 0, 1)";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	
+	// Name entry screen
+	ctx.fillStyle = "Gold";
+	ctx.font = "40px Helvetica";
+	ctx.textAlign = "center";
+	ctx.fillText("Please enter your name", canvas.width/2, canvas.height/2);
+	ctx.font = "20px Helvetica";
+	ctx.fillText("No longer than 30 characters please", canvas.width/2, (canvas.height/2)+35);
+	ctx.fillRect(425, 600, 150, 50);
+	ctx.fillStyle = "White";
+	ctx.fillText("Submit", canvas.width/2, 625);
+});
+
+/*
+// Setting background color
 ctx.fillStyle = "rgba(75, 0, 0, 1)";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -60,3 +80,4 @@ ctx.fillText("YOUR HAND", canvas.width/2, 625);
 ctx.font = "40px Impact";
 ctx.fillStyle = "#FF8C00";
 ctx.fillText("VS.", canvas.width/2, canvas.height/2);
+*/
