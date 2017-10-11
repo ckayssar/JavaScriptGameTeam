@@ -7,43 +7,45 @@
         <meta name="keywords" content="HTML">
 		<link rel="stylesheet" type="text/css" href="index.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add the Game Title Here</title>
+        <title>The CSM Card Game Home</title>
     </head>
 	<body>
 		<header>
-			<h1>The Game Name</h1>
+			<h1>Home of The CSM Card Game</h1>
 		</header>
 		<nav>
 			<ul>
-				<li><a class="active" href="index.html">Home</a></li>
+				<li><a class="active">Home</a></li>
 				<li><a href="JavaScriptGame/game.html">JavaScript Game</a></li>
 			</ul>
 		</nav>
 		<section>
 			<h2>HOW THE GAME WORKS</h2>
 			<ul>
-				<li>The Player and an AI will have 50 health points (HP)</li>
-				<li>Before the Player and an AI can begin playing, the Player will choose between heads and tails and a coin will be flipped</li>
-				<li>If the player wins the coin toss, they will be the first to “bet”. If they lose, they will be the second to “bet”</li>
-				<li>The Player and an AI will have 6 cards in their hand to play</li>
+				<li>The Player and the Opponent (an AI) will have 50 health points, denoted as HP</li>
+				<li>Before the Player and the AI can begin playing, the Player will choose between heads and tails and a coin will be flipped</li>
+				<li>If the player wins the coin toss, they will be the first to “bet”. If they lose, the AI will be first to “bet”</li>
+				<li>The Player and an AI will then gain 6 cards in their hand to play</li>
+				<li>These 6 cards will not be revealed to the opponent</li>
 				<li>The first to bet will wager an amount of health between 1 and 10 HP</li>
 				<li>The Player will select a card (by clicking) and place a card in the middle</li>
-				<li>The AI will place a card at the same time (at random)</li>
-				<li>Every time a card is placed down, a replacement card will be drawn</li>
+				<li>The AI will place a card at the same time (a random one from their hand)</li>
 				<li>Whoever loses that round will lose the amount of HP that was wagered</li>
-				<li>The person who gets to wager will alternate every turn</li>
+				<li>When a round is completed, the card used will be replaced</li>
+				<li>The Player and AI will trade betting responsibilites each turn</li>
 			</ul>
 			<h3>HOW THE CARDS WORK</h3>
 			<ul>
 				<li>There are 13 different types of card that can be drawn, this will be randomized</li>
-				<li>It is possible to have 6 of the same card in your hand</li>
-				<li>Each card has a different combination with another card</li>
+				<li>It is possible to have multiple of the same card in your hand</li>
+				<li>Each card forms a different result when faced with another card</li>
 				<li>Some combinations will result in a victory, others in a tie</li>
-				<li>There are two different types of tie; good fits and unrelated</li>
-				<li>Good fits result in the round continuing and a multiplier (x2) being applied to the bet</li>
-				<li>An unrelated result causes both players to lose HP</li>
-				<li>The back of the cards should have the same design</li>
-				<li>The face of the cards should be different based on the cards themselves</li>
+				<li>There are two different types of tie; an "unrelated" tie and a "multiplier" tie</li>
+				<li>A "multiplier" will add multiplier (x2) being applied to the bet</li>
+				<li>After a "multiplier" result, the players must place another card down</li>
+				<li>An "unrelated" result causes both players to lose HP, half that of the bet (this rounds down)</li>
+				<li>This continues until someone runs out of HP</li>
+				<li>If both players run out of HP, it is a tie</li>
 			</ul>
 			<article>
 				<h3>Directions</h3>
