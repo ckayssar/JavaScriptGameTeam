@@ -48,3 +48,21 @@
 	font-size: 20px;
 	visibility: hidden;
 }
+
+#tossResult {
+	position: absolute;
+	width: 900px;
+	left: 2px;
+	top: 300px;
+	background-color: Gold;
+	height: 200px;
+	color: rgb(75, 0, 0);
+	font-family: Helvetica;
+	font-size: 40px;
+	background-image: url("../images/coinHead.png");
+	background-size: 250px 250px;
+    background-repeat: no-repeat;
+	background-position: right;
+	padding: 50px;
+	visibility: hidden;
+}
