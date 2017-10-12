@@ -6,8 +6,8 @@ var coin = 0;
 var userBet = false;
 var yourName = "Your Name: ";
 var theirName = "Their Name: ";
-var yourHP = 50;
-var theirHP = 50;
+var yourHP = 100;
+var theirHP = 100;
 var userCard;
 var AICard;
 var betAmount = 0;
@@ -392,6 +392,9 @@ function bet() {
 // This handles the User choosing a card
 function takeTurn() {
 	// Fill out bet amount
+	ctx.fillStyle = "rgba(0, 0, 0, 1)";
+	ctx.fillRect(820, 360, 60, 40);
+	ctx.textAlign = "center";
 	ctx.fillStyle = "Gold"
 	ctx.font = "25px Impact";
 	ctx.fillText(betAmount, 850, 390);
@@ -1255,6 +1258,7 @@ function useResult() {
 			ctx.fillStyle = "Gold";
 			theirHP -= betAmount;
 			ctx.fillText("Their HP: " + theirHP, 25, 30);
+			bet();
 			break;
 		// Degrades User HP
 		case "loss":
@@ -1262,16 +1266,13 @@ function useResult() {
 			ctx.fillStyle = "Gold";
 			yourHP -= betAmount;
 			ctx.fillText("Your HP: " + yourHP, 25, 880);
+			bet();
 			break;
 		// Doubles Bet Amount
 		case "multiply":
-			ctx.fillStyle = "rgba(0, 0, 0, 1)";
-			ctx.fillRect(820, 360, 60, 40);
 			ctx.fillStyle = "Gold";
 			betAmount = betAmount * 2;
-			ctx.font = "25px Impact";
-			ctx.textAlign = "center";
-			ctx.fillText(betAmount, 850, 390);
+			takeTurn();
 			break;
 		// Degrades both players HP
 		case "unrelate":
@@ -1282,5 +1283,6 @@ function useResult() {
 			yourHP -= Math.floor(betAmount / 2);
 			ctx.fillText("Their HP: " + theirHP, 25, 30);
 			ctx.fillText("Your HP: " + yourHP, 25, 880);
+			bet();
 	}
 }
