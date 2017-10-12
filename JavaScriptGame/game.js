@@ -326,63 +326,76 @@ function bet() {
 		$("#betOne").click(function(){
 			betAmount = 1;		
 			$("#betWindow").css("visibility", "hidden");
+			userBet = false;
 			takeTurn();
 		});
 		$("#betTwo").click(function(){
 			betAmount = 2;		
 			$("#betWindow").css("visibility", "hidden");
+			userBet = false;
 			takeTurn();
 		});
 		$("#betThree").click(function(){
 			betAmount = 3;		
 			$("#betWindow").css("visibility", "hidden");
+			userBet = false;
 			takeTurn();
 		});
 		$("#betFour").click(function(){
 			betAmount = 4;		
 			$("#betWindow").css("visibility", "hidden");
+			userBet = false;
 			takeTurn();
 		});
 		$("#betFive").click(function(){
 			betAmount = 5;		
 			$("#betWindow").css("visibility", "hidden");
+			userBet = false;
 			takeTurn();
 		});
 		$("#betSix").click(function(){
 			betAmount = 6;		
 			$("#betWindow").css("visibility", "hidden");
+			userBet = false;
 			takeTurn();
 		});
 		$("#betSeven").click(function(){
 			betAmount = 7;		
 			$("#betWindow").css("visibility", "hidden");
+			userBet = false;
 			takeTurn();
 		});
 		$("#betEight").click(function(){
 			betAmount = 8;		
 			$("#betWindow").css("visibility", "hidden");
+			userBet = false;
 			takeTurn();
 		});
 		$("#betNine").click(function(){
 			betAmount = 9;		
 			$("#betWindow").css("visibility", "hidden");
+			userBet = false;
 			takeTurn();
 		});
 		$("#betTen").click(function(){
 			betAmount = 10;	
 			$("#betWindow").css("visibility", "hidden");
+			userBet = false;
 			takeTurn();			
 		});
 	}
 }
 
 function takeTurn() {
+	// Fill out bet amount
 	ctx.fillStyle = "Gold"
 	ctx.font = "25px Impact";
 	ctx.fillText(betAmount, 850, 390);
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
-	
-	//AI chooses card
+}
+
+// AI chooses card after user does
+function AIChooseCard() {
 	rand = Math.floor(Math.random() * 6);
 	AICard = AIHand[rand];
 	ctx.drawImage(AICard, 540, 325, 175, 250);
