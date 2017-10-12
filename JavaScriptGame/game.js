@@ -392,6 +392,47 @@ function takeTurn() {
 	ctx.font = "25px Impact";
 	ctx.fillText(betAmount, 850, 390);
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
+	
+	canvas.addEventListener("mousedown", getPosition, false);
+	
+	function getPosition(e) {
+		var fr = canvas.getBoundingClientRect();
+		var x = e.x - fr.left - 0.5;
+		var y = e.y - fr.top - 0.203125;
+		
+		if (y <= 801 && y >= 639) {
+			if (x <= 181 && x >= 39) {
+				ctx.drawImage(userHand[0], 285, 325, 175, 250);
+				ctx.fillRect(40, 640, 140, 200);
+				AIChooseCard();
+			}
+			else if (x <= 336 && x >= 194) {
+				ctx.drawImage(userHand[1], 285, 325, 175, 250);
+				ctx.fillRect(195, 640, 140, 200);
+				AIChooseCard();
+			}
+			else if (x <= 491 && x >= 349) {
+				ctx.drawImage(userHand[2], 285, 325, 175, 250);
+				ctx.fillRect(350, 640, 140, 200);
+				AIChooseCard();
+			}
+			else if (x <= 648 && x >= 506) {
+				ctx.drawImage(userHand[3], 285, 325, 175, 250);
+				ctx.fillRect(507, 640, 140, 200);
+				AIChooseCard();
+			}
+			else if (x <= 803 && x >= 661) {
+				ctx.drawImage(userHand[4], 285, 325, 175, 250);
+				ctx.fillRect(662, 640, 140, 200);
+				AIChooseCard();
+			}
+			else if (x <= 958 && x >= 816) {
+				ctx.drawImage(userHand[5], 285, 325, 175, 250);
+				ctx.fillRect(817, 640, 140, 200);
+				AIChooseCard();
+			}
+		}
+	}
 }
 
 // AI chooses card after user does
