@@ -1,10 +1,33 @@
 // Variables to be used
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var name = "";
 var toss = "";
 var coin = 0;
 var userBet = false;
+var yourName = "Your Name: ";
+var theirName = "Their Name: ";
+var yourHP = 50;
+var theirHP = 50;
+
+// Images
+var cardBack = new Image();
+var exam = new Image();
+var freshman = new Image();
+var senior = new Image();
+var debt = new Image();
+var dog = new Image();
+var market = new Image();
+var office = new Image();
+var snow = new Image();
+var scholarship = new Image();
+var parking = new Image();
+var GPA = new Image();
+var domino = new Image();
+var prof = new Image();
+cardBack.src = "../images/cardBack.jpg";
+exam.src = "../images/cardExam.jpg";
+freshman.src = "../images/cardFreshman.jpg";
+
 
 // This is the initial function when the game begins
 $(document).ready(function() {
@@ -42,7 +65,7 @@ $(document).ready(function() {
 		}
 		else {
 			// If name is valid, store it and move on
-			name = $("#nameInput").val();
+			yourName += $("#nameInput").val();
 			$("#nameSubmit").css("visibility", "hidden");
 			$("#nameInput").css("visibility", "hidden");
 			ctx.fillStyle = "rgba(75, 0, 0, 1)";
@@ -131,7 +154,47 @@ function coinToss() {
 	$("#tossResult").fadeOut(3000);
 	
 	// Begin game
+	nameAI();
 	startGame();
+}
+
+// This selects the AI's name
+function nameAI() {
+	rand = Math.floor(Math.random() * 10);
+	switch (rand) {
+		case 0:
+			theirName += "Gilgamesh the Destroyer";
+			break;
+		case 1:
+			theirName += "C74F the Hexadecimal";
+			break;
+		case 2:
+			theirName += "Cassius the Lumenescent";
+			break;
+		case 3:
+			theirName += "Arnold the Terminator";
+			break;
+		case 4:
+			theirName += "Hezekiah the Adonis";
+			break;
+		case 5:
+			theirName += "Ezekiel the Swift";
+			break;
+		case 6:
+			theirName += "Eleazar the Golem";
+			break;
+		case 7:
+			theirName += "Mordecai the Precise";
+			break;
+		case 8:
+			theirName += "Nebuchadnezzar the Ram";
+			break;
+		case 9:
+			theirName += "Sal";
+			break;
+		default:
+			theirName += "He Without a Name";
+	}
 }
 
 // Loads game screen
@@ -182,10 +245,10 @@ function startGame() {
 	ctx.font = "20px Helvetica";
 	ctx.textAlign = "left";
 	ctx.fillStyle = "white";
-	ctx.fillText("Your HP:", 25, 880);
-	ctx.fillText("Their HP:", 25, 30);
-	ctx.fillText("Their Name:", 300, 30);
-	ctx.fillText("Your Name:", 300, 880);
+	ctx.fillText("Your HP: " + yourHP, 25, 880);
+	ctx.fillText("Their HP: " + theirHP, 25, 30);
+	ctx.fillText(theirName, 300, 30);
+	ctx.fillText(yourName, 300, 880);
 
 	// Creating card text
 	ctx.font = "20px Courier";
@@ -197,4 +260,22 @@ function startGame() {
 	ctx.font = "40px Impact";
 	ctx.fillStyle = "#FF8C00";
 	ctx.fillText("VS.", canvas.width/2, canvas.height/2);
+	
+	// Deal cards
+	ctx.drawImage(cardBack, 40, 90, 140, 200);
+	ctx.drawImage(cardBack, 195, 90, 140, 200);
+	ctx.drawImage(cardBack, 350, 90, 140, 200);
+	ctx.drawImage(cardBack, 507, 90, 140, 200);
+	ctx.drawImage(cardBack, 662, 90, 140, 200);
+	ctx.drawImage(cardBack, 817, 90, 140, 200);
+	dealUser();
+}
+
+// This provides a random card
+function randCard() {
+	rand = Math.floor(Math.random() * 13);
+	switch (rand) {
+		case 0:
+			
+	}
 }
