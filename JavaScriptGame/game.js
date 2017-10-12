@@ -209,7 +209,7 @@ function nameAI() {
 			theirName += "Nebuchadnezzar the Raider";
 			break;
 		case 9:
-			theirName += "Sal";
+			theirName += "Your Mom";
 	}
 }
 
@@ -1238,10 +1238,49 @@ function makeResult() {
 			}
 	}
 	
-	//useResult();
+	useResult();
 }
 
-//
+// This handles what a result actually does
 function useResult() {
-	alert(result);
+	ctx.font = "20px Helvetica";
+	ctx.textAlign = "left";
+	ctx.fillStyle = "rgba(75, 0, 0, 1)";
+	
+	// Affects the screen and stats
+	switch(result) {
+		// Degrades AI HP
+		case "win":
+			ctx.fillRect(0, 0, 290, 32);
+			ctx.fillStyle = "Gold";
+			theirHP -= betAmount;
+			ctx.fillText("Their HP: " + theirHP, 25, 30);
+			break;
+		// Degrades User HP
+		case "loss":
+			ctx.fillRect(0, 860, 290, 40);
+			ctx.fillStyle = "Gold";
+			yourHP -= betAmount;
+			ctx.fillText("Your HP: " + yourHP, 25, 880);
+			break;
+		// Doubles Bet Amount
+		case "multiply":
+			ctx.fillStyle = "rgba(0, 0, 0, 1)";
+			ctx.fillRect(820, 360, 60, 40);
+			ctx.fillStyle = "Gold";
+			betAmount = betAmount * 2;
+			ctx.font = "25px Impact";
+			ctx.textAlign = "center";
+			ctx.fillText(betAmount, 850, 390);
+			break;
+		// Degrades both players HP
+		case "unrelate":
+			ctx.fillRect(0, 0, 290, 32);
+			ctx.fillRect(0, 860, 290, 40);
+			ctx.fillStyle = "Gold";
+			theirHP -= Math.floor(betAmount / 2);
+			yourHP -= Math.floor(betAmount / 2);
+			ctx.fillText("Their HP: " + theirHP, 25, 30);
+			ctx.fillText("Your HP: " + yourHP, 25, 880);
+	}
 }
