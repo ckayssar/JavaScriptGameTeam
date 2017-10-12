@@ -8,8 +8,10 @@ var yourName = "Your Name: ";
 var theirName = "Their Name: ";
 var yourHP = 50;
 var theirHP = 50;
+var userCard;
 var AICard;
 var betAmount = 0;
+var result = "";
 
 // Images and cards
 var cardBack = new Image();
@@ -290,28 +292,29 @@ function startGame() {
 	ctx.drawImage(cardBack, 662, 90, 140, 200);
 	ctx.drawImage(cardBack, 817, 90, 140, 200);
 	firstDeal();
-	ctx.drawImage(userHand[0], 40, 640, 140, 200);
-	ctx.drawImage(userHand[1], 195, 640, 140, 200);
-	ctx.drawImage(userHand[2], 350, 640, 140, 200);
-	ctx.drawImage(userHand[3], 507, 640, 140, 200);
-	ctx.drawImage(userHand[4], 662, 640, 140, 200);
-	ctx.drawImage(userHand[5], 817, 640, 140, 200);
+	ctx.drawImage(deck[userHand[0]], 40, 640, 140, 200);
+	ctx.drawImage(deck[userHand[1]], 195, 640, 140, 200);
+	ctx.drawImage(deck[userHand[2]], 350, 640, 140, 200);
+	ctx.drawImage(deck[userHand[3]], 507, 640, 140, 200);
+	ctx.drawImage(deck[userHand[4]], 662, 640, 140, 200);
+	ctx.drawImage(deck[userHand[5]], 817, 640, 140, 200);
 }
 
 // This makes the initial deal and then moves on
 function firstDeal() {
 	for (i = 0; i < userHand.length; ++i) {
 		rand = Math.floor(Math.random() * 13);
-		userHand[i] = deck[rand];
+		userHand[i] = rand;
 	}
 	for (i = 0; i < AIHand.length; ++i) {
 		rand = Math.floor(Math.random() * 13);
-		AIHand[i] = deck[rand];
+		AIHand[i] = rand;
 	}
 	
 	bet();
 }
 
+// This handles AI and User betting
 function bet() {
 	// AI bet
 	if (userBet === false) {
@@ -386,6 +389,7 @@ function bet() {
 	}
 }
 
+// This handles the User choosing a card
 function takeTurn() {
 	// Fill out bet amount
 	ctx.fillStyle = "Gold"
@@ -402,33 +406,45 @@ function takeTurn() {
 		
 		if (y <= 801 && y >= 639) {
 			if (x <= 181 && x >= 39) {
-				ctx.drawImage(userHand[0], 285, 325, 175, 250);
+				userCard = userHand[0];
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(40, 640, 140, 200);
+				canvas.removeEventListener("mousedown", getPosition, false);
 				AIChooseCard();
 			}
 			else if (x <= 336 && x >= 194) {
-				ctx.drawImage(userHand[1], 285, 325, 175, 250);
+				userCard = userHand[1];
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(195, 640, 140, 200);
+				canvas.removeEventListener("mousedown", getPosition, false);
 				AIChooseCard();
 			}
 			else if (x <= 491 && x >= 349) {
-				ctx.drawImage(userHand[2], 285, 325, 175, 250);
+				userCard = userHand[2];
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(350, 640, 140, 200);
+				canvas.removeEventListener("mousedown", getPosition, false);
 				AIChooseCard();
 			}
 			else if (x <= 648 && x >= 506) {
-				ctx.drawImage(userHand[3], 285, 325, 175, 250);
+				userCard = userHand[3];
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(507, 640, 140, 200);
+				canvas.removeEventListener("mousedown", getPosition, false);
 				AIChooseCard();
 			}
 			else if (x <= 803 && x >= 661) {
-				ctx.drawImage(userHand[4], 285, 325, 175, 250);
+				userCard = userHand[4];
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(662, 640, 140, 200);
+				canvas.removeEventListener("mousedown", getPosition, false);
 				AIChooseCard();
 			}
 			else if (x <= 958 && x >= 816) {
-				ctx.drawImage(userHand[5], 285, 325, 175, 250);
+				userCard = userHand[5];
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(817, 640, 140, 200);
+				canvas.removeEventListener("mousedown", getPosition, false);
 				AIChooseCard();
 			}
 		}
@@ -439,7 +455,7 @@ function takeTurn() {
 function AIChooseCard() {
 	rand = Math.floor(Math.random() * 6);
 	AICard = AIHand[rand];
-	ctx.drawImage(AICard, 540, 325, 175, 250);
+	ctx.drawImage(deck[AICard], 540, 325, 175, 250);
 	switch (rand) {
 		case 0:
 			ctx.fillRect(40, 90, 140, 200);
@@ -459,4 +475,773 @@ function AIChooseCard() {
 		case 5:
 			ctx.fillRect(817, 90, 140, 200);
 	}
+	
+	makeResult();
+}
+
+// This handles how the AI and user cards interact
+function makeResult() {
+	// This is one really ugly and big switch--please advise.
+	switch(userCard) {
+		
+		// Exam case
+		case 0:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "multiply";
+					break;
+				// Freshman case
+				case 1:
+					result = "win";
+					break;
+				// Senior case
+				case 2:
+					result = "loss";
+					break;
+				// Debt case
+				case 3:
+					result = "multiply";
+					break;
+				// Dog case
+				case 4:
+					result = "loss";
+					break;
+				// Market case
+				case 5:
+					result = "unrelate";
+					break;
+				// Office case
+				case 6:
+					result = "loss";
+					break;
+				// Snow case
+				case 7:
+					result = "loss";
+					break;
+				// Scholarship case
+				case 8:
+					result = "unrelate";
+					break;
+				// Parking case
+				case 9:
+					result = "multiply";
+					break;
+				// GPA case
+				case 10:
+					result = "multiply";
+					break;
+				// Domino's case
+				case 11:
+					result = "loss";
+					break;
+				// Prof case
+				case 12:
+					result = "multiply";
+			}
+			break;
+			
+		// Freshman case
+		case 1:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "loss";
+					break;
+				// Freshman case
+				case 1:
+					result = "multiply";
+					break;
+				// Senior case
+				case 2:
+					result = "loss";
+					break;
+				// Debt case
+				case 3:
+					result = "loss";
+					break;
+				// Dog case
+				case 4:
+					result = "loss";
+					break;
+				// Market case
+				case 5:
+					result = "loss";
+					break;
+				// Office case
+				case 6:
+					result = "multiply";
+					break;
+				// Snow case
+				case 7:
+					result = "multiply";
+					break;
+				// Scholarship case
+				case 8:
+					result = "multiply";
+					break;
+				// Parking case
+				case 9:
+					result = "unrelate";
+					break;
+				// GPA case
+				case 10:
+					result = "loss";
+					break;
+				// Domino's case
+				case 11:
+					result = "multiply";
+					break;
+				// Prof case
+				case 12:
+					result = "loss";
+			}
+			break;
+		
+		// Senior case
+		case 2:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "win";
+					break;
+				// Freshman case
+				case 1:
+					result = "win";
+					break;
+				// Senior case
+				case 2:
+					result = "multiply";
+					break;
+				// Debt case
+				case 3:
+					result = "loss";
+					break;
+				// Dog case
+				case 4:
+					result = "loss";
+					break;
+				// Market case
+				case 5:
+					result = "unrelate";
+					break;
+				// Office case
+				case 6:
+					result = "multiply";
+					break;
+				// Snow case
+				case 7:
+					result = "multiply";
+					break;
+				// Scholarship case
+				case 8:
+					result = "multiply";
+					break;
+				// Parking case
+				case 9:
+					result = "loss";
+					break;
+				// GPA case
+				case 10:
+					result = "loss";
+					break;
+				// Domino's case
+				case 11:
+					result = "multiply";
+					break;
+				// Prof case
+				case 12:
+					result = "loss";
+			}
+			break;
+			
+		// Debt case
+		case 3:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "multiply";
+					break;
+				// Freshman case
+				case 1:
+					result = "win";
+					break;
+				// Senior case
+				case 2:
+					result = "win";
+					break;
+				// Debt case
+				case 3:
+					result = "multiply";
+					break;
+				// Dog case
+				case 4:
+					result = "loss";
+					break;
+				// Market case
+				case 5:
+					result = "multiply";
+					break;
+				// Office case
+				case 6:
+					result = "unrelate";
+					break;
+				// Snow case
+				case 7:
+					result = "unrelate";
+					break;
+				// Scholarship case
+				case 8:
+					result = "loss";
+					break;
+				// Parking case
+				case 9:
+					result = "unrelate";
+					break;
+				// GPA case
+				case 10:
+					result = "multiply";
+					break;
+				// Domino's case
+				case 11:
+					result = "loss";
+					break;
+				// Prof case
+				case 12:
+					result = "multiply";
+			}
+			break;
+		
+		// Dog case
+		case 4:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "win";
+					break;
+				// Freshman case
+				case 1:
+					result = "win";
+					break;
+				// Senior case
+				case 2:
+					result = "win";
+					break;
+				// Debt case
+				case 3:
+					result = "win";
+					break;
+				// Dog case
+				case 4:
+					result = "multiply";
+					break;
+				// Market case
+				case 5:
+					result = "loss";
+					break;
+				// Office case
+				case 6:
+					result = "win";
+					break;
+				// Snow case
+				case 7:
+					result = "multiply";
+					break;
+				// Scholarship case
+				case 8:
+					result = "unrelate";
+					break;
+				// Parking case
+				case 9:
+					result = "win";
+					break;
+				// GPA case
+				case 10:
+					result = "win";
+					break;
+				// Domino's case
+				case 11:
+					result = "win";
+					break;
+				// Prof case
+				case 12:
+					result = "win";
+			}
+			break;
+			
+		// Market case
+		case 5:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "unrelate";
+					break;
+				// Freshman case
+				case 1:
+					result = "win";
+					break;
+				// Senior case
+				case 2:
+					result = "unrelate";
+					break;
+				// Debt case
+				case 3:
+					result = "multiply";
+					break;
+				// Dog case
+				case 4:
+					result = "win";
+					break;
+				// Market case
+				case 5:
+					result = "multiply";
+					break;
+				// Office case
+				case 6:
+					result = "unrelate";
+					break;
+				// Snow case
+				case 7:
+					result = "unrelate";
+					break;
+				// Scholarship case
+				case 8:
+					result = "unrelate";
+					break;
+				// Parking case
+				case 9:
+					result = "unrelate";
+					break;
+				// GPA case
+				case 10:
+					result = "win";
+					break;
+				// Domino's case
+				case 11:
+					result = "loss";
+					break;
+				// Prof case
+				case 12:
+					result = "unrelate";
+			}
+			break;
+			
+		// Office case
+		case 6:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "win";
+					break;
+				// Freshman case
+				case 1:
+					result = "multiply";
+					break;
+				// Senior case
+				case 2:
+					result = "multiply";
+					break;
+				// Debt case
+				case 3:
+					result = "unrelate";
+					break;
+				// Dog case
+				case 4:
+					result = "loss";
+					break;
+				// Market case
+				case 5:
+					result = "unrelate";
+					break;
+				// Office case
+				case 6:
+					result = "multiply";
+					break;
+				// Snow case
+				case 7:
+					result = "loss";
+					break;
+				// Scholarship case
+				case 8:
+					result = "unrelate";
+					break;
+				// Parking case
+				case 9:
+					result = "loss";
+					break;
+				// GPA case
+				case 10:
+					result = "win";
+					break;
+				// Domino's case
+				case 11:
+					result = "multiply";
+					break;
+				// Prof case
+				case 12:
+					result = "loss";
+			}
+			break;
+			
+		// Snow case
+		case 7:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "win";
+					break;
+				// Freshman case
+				case 1:
+					result = "multiply";
+					break;
+				// Senior case
+				case 2:
+					result = "multiply";
+					break;
+				// Debt case
+				case 3:
+					result = "unrelate";
+					break;
+				// Dog case
+				case 4:
+					result = "multiply";
+					break;
+				// Market case
+				case 5:
+					result = "unrelate";
+					break;
+				// Office case
+				case 6:
+					result = "win";
+					break;
+				// Snow case
+				case 7:
+					result = "multiply";
+					break;
+				// Scholarship case
+				case 8:
+					result = "multiply";
+					break;
+				// Parking case
+				case 9:
+					result = "win";
+					break;
+				// GPA case
+				case 10:
+					result = "win";
+					break;
+				// Domino's case
+				case 11:
+					result = "multiply";
+					break;
+				// Prof case
+				case 12:
+					result = "win";
+			}
+			break;
+		
+		// Scholarship case
+		case 8:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "unrelate";
+					break;
+				// Freshman case
+				case 1:
+					result = "multiply";
+					break;
+				// Senior case
+				case 2:
+					result = "multiply";
+					break;
+				// Debt case
+				case 3:
+					result = "win";
+					break;
+				// Dog case
+				case 4:
+					result = "unrelate";
+					break;
+				// Market case
+				case 5:
+					result = "unrelate";
+					break;
+				// Office case
+				case 6:
+					result = "unrelate";
+					break;
+				// Snow case
+				case 7:
+					result = "multiply";
+					break;
+				// Scholarship case
+				case 8:
+					result = "multiply";
+					break;
+				// Parking case
+				case 9:
+					result = "unrelate";
+					break;
+				// GPA case
+				case 10:
+					result = "loss";
+					break;
+				// Domino's case
+				case 11:
+					result = "multiply";
+					break;
+				// Prof case
+				case 12:
+					result = "unrelate";
+			}
+			break;
+			
+		// Parking case
+		case 9:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "multiply";
+					break;
+				// Freshman case
+				case 1:
+					result = "unrelate";
+					break;
+				// Senior case
+				case 2:
+					result = "win";
+					break;
+				// Debt case
+				case 3:
+					result = "unrelate";
+					break;
+				// Dog case
+				case 4:
+					result = "loss";
+					break;
+				// Market case
+				case 5:
+					result = "unrelate";
+					break;
+				// Office case
+				case 6:
+					result = "win";
+					break;
+				// Snow case
+				case 7:
+					result = "loss";
+					break;
+				// Scholarship case
+				case 8:
+					result = "unrelate";
+					break;
+				// Parking case
+				case 9:
+					result = "multiply";
+					break;
+				// GPA case
+				case 10:
+					result = "unrelate";
+					break;
+				// Domino's case
+				case 11:
+					result = "win";
+					break;
+				// Prof case
+				case 12:
+					result = "win";
+			}
+			break;
+			
+		// GPA case
+		case 10:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "multiply";
+					break;
+				// Freshman case
+				case 1:
+					result = "win";
+					break;
+				// Senior case
+				case 2:
+					result = "win";
+					break;
+				// Debt case
+				case 3:
+					result = "multiply";
+					break;
+				// Dog case
+				case 4:
+					result = "loss";
+					break;
+				// Market case
+				case 5:
+					result = "loss";
+					break;
+				// Office case
+				case 6:
+					result = "loss";
+					break;
+				// Snow case
+				case 7:
+					result = "loss";
+					break;
+				// Scholarship case
+				case 8:
+					result = "win";
+					break;
+				// Parking case
+				case 9:
+					result = "unrelate";
+					break;
+				// GPA case
+				case 10:
+					result = "multiply";
+					break;
+				// Domino's case
+				case 11:
+					result = "loss";
+					break;
+				// Prof case
+				case 12:
+					result = "multiply";
+			}
+			break;
+			
+		// Domino's case
+		case 11:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "win";
+					break;
+				// Freshman case
+				case 1:
+					result = "multiply";
+					break;
+				// Senior case
+				case 2:
+					result = "multiply";
+					break;
+				// Debt case
+				case 3:
+					result = "win";
+					break;
+				// Dog case
+				case 4:
+					result = "loss";
+					break;
+				// Market case
+				case 5:
+					result = "win";
+					break;
+				// Office case
+				case 6:
+					result = "multiply";
+					break;
+				// Snow case
+				case 7:
+					result = "multiply";
+					break;
+				// Scholarship case
+				case 8:
+					result = "multiply";
+					break;
+				// Parking case
+				case 9:
+					result = "loss";
+					break;
+				// GPA case
+				case 10:
+					result = "win";
+					break;
+				// Domino's case
+				case 11:
+					result = "multiply";
+					break;
+				// Prof case
+				case 12:
+					result = "unrelate";
+			}
+			break;
+			
+		// Prof case
+		case 12:
+			// Inner switch
+			switch(AICard) {
+				// Exam case
+				case 0:
+					result = "multiply";
+					break;
+				// Freshman case
+				case 1:
+					result = "win";
+					break;
+				// Senior case
+				case 2:
+					result = "win";
+					break;
+				// Debt case
+				case 3:
+					result = "multiply";
+					break;
+				// Dog case
+				case 4:
+					result = "loss";
+					break;
+				// Market case
+				case 5:
+					result = "unrelate";
+					break;
+				// Office case
+				case 6:
+					result = "win";
+					break;
+				// Snow case
+				case 7:
+					result = "loss";
+					break;
+				// Scholarship case
+				case 8:
+					result = "unrelate";
+					break;
+				// Parking case
+				case 9:
+					result = "loss";
+					break;
+				// GPA case
+				case 10:
+					result = "multiply";
+					break;
+				// Domino's case
+				case 11:
+					result = "unrelate";
+					break;
+				// Prof case
+				case 12:
+					result = "multiply";
+			}
+	}
+	
+	//useResult();
+}
+
+//
+function useResult() {
+	alert(result);
 }
