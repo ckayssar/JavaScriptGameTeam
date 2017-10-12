@@ -322,6 +322,7 @@ function bet() {
 		takeTurn();
 	}
 	else {
+		$("#betWindow").css("visibility", "visible");
 	}
 }
 

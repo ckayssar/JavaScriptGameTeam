@@ -49,6 +49,126 @@
 	visibility: hidden;
 }
 
+#betOne {
+	position: absolute;
+	left: 50px;
+	top: 140px;
+	width: 50px;
+	height: 40px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
+#betTwo {
+	position: absolute;
+	left: 100px;
+	top: 140px;
+	width: 50px;
+	height: 40px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
+#betThree {
+	position: absolute;
+	left: 150px;
+	top: 140px;
+	width: 50px;
+	height: 40px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
+#betFour {
+	position: absolute;
+	left: 200px;
+	top: 140px;
+	width: 50px;
+	height: 40px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
+#betFive {
+	position: absolute;
+	left: 250px;
+	top: 140px;
+	width: 50px;
+	height: 40px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
+#betSix {
+	position: absolute;
+	left: 300px;
+	top: 140px;
+	width: 50px;
+	height: 40px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
+#betSeven {
+	position: absolute;
+	left: 350px;
+	top: 140px;
+	width: 50px;
+	height: 40px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
+#betEight {
+	position: absolute;
+	left: 400px;
+	top: 140px;
+	width: 50px;
+	height: 40px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
+#betNine {
+	position: absolute;
+	left: 450px;
+	top: 140px;
+	width: 50px;
+	height: 40px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
+#betTen {
+	position: absolute;
+	left: 500px;
+	top: 140px;
+	width: 50px;
+	height: 40px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 20px;
+}
+
 #tossResult {
 	position: absolute;
 	width: 900px;
@@ -69,7 +189,7 @@
 
 #betWindow {
 	position: absolute;
-	width: 500px;
+	width: 600px;
 	left: 202px;
 	top: 2px;
 	height: 200px;
@@ -77,6 +197,6 @@
 	font-family: Helvetica;
 	font-size: 40px;
 	background-color: Gold;
-	padding: 50px;
 	text-align: center;
+	visibility: hidden;
 }
