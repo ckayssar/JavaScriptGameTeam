@@ -12,6 +12,7 @@ var userCard;
 var AICard;
 var betAmount = 0;
 var result = "";
+var round = 0;
 
 // Images and cards
 var cardBack = new Image();
@@ -45,8 +46,8 @@ prof.src = "../images/cardProf.jpg";
 
 // The deck
 var deck = [exam, freshman, senior, debt, dog, market, office, snow, scholarship, parking, GPA, domino, prof];
-var userHand = new Array(6);
-var AIHand = new Array(6);
+var userHand = [-1, -1, -1, -1, -1, -1];
+var AIHand = [-1, -1, -1, -1, -1, -1];
 
 // This is the initial function when the game begins
 $(document).ready(function() {
@@ -79,8 +80,8 @@ $(document).ready(function() {
 		if ($("#nameInput").val().length === 0) {
 			alert("Please input some sort of name");
 		}
-		else if ($("#nameInput").val().length > 60) {
-			alert("That's longer than 60 characters buster!");
+		else if ($("#nameInput").val().length > 30) {
+			alert("That's longer than 30 characters buster!");
 		}
 		else {
 			// If name is valid, store it and move on
@@ -206,7 +207,7 @@ function nameAI() {
 			theirName += "Mordecai the Pillager";
 			break;
 		case 8:
-			theirName += "Nebuchadnezzar the Raider";
+			theirName += "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.";
 			break;
 		case 9:
 			theirName += "Your Mom";
@@ -278,20 +279,31 @@ function startGame() {
 	ctx.fillText("VS.", canvas.width/2, canvas.height/2);
 	
 	// Bet area
+	ctx.fillStyle = "Gold";
 	ctx.font = "20px Helvetica";
 	ctx.fillText("Bet Amount", 850, 350);
 	ctx.fillRect(819, 359, 62, 42);
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
 	ctx.fillRect(820, 360, 60, 40);
 	
+	// Round number
+	ctx.fillStyle = "Gold";
+	ctx.fillText("Round Number", 850, 450);
+	ctx.fillRect(819, 459, 62, 42);
+	ctx.fillStyle = "rgba(0, 0, 0, 1)";
+	ctx.fillRect(820, 460, 60, 40);
+	ctx.fillStyle = "Gold"
+	ctx.font = "25px Impact";
+	ctx.fillText(round, 850, 490);
+	
 	// Deal cards
+	fillHands();
 	ctx.drawImage(cardBack, 40, 90, 140, 200);
 	ctx.drawImage(cardBack, 195, 90, 140, 200);
 	ctx.drawImage(cardBack, 350, 90, 140, 200);
 	ctx.drawImage(cardBack, 507, 90, 140, 200);
 	ctx.drawImage(cardBack, 662, 90, 140, 200);
 	ctx.drawImage(cardBack, 817, 90, 140, 200);
-	firstDeal();
 	ctx.drawImage(deck[userHand[0]], 40, 640, 140, 200);
 	ctx.drawImage(deck[userHand[1]], 195, 640, 140, 200);
 	ctx.drawImage(deck[userHand[2]], 350, 640, 140, 200);
@@ -301,14 +313,23 @@ function startGame() {
 }
 
 // This makes the initial deal and then moves on
-function firstDeal() {
+function fillHands() {
+	// This for loops repopulate the hands
 	for (i = 0; i < userHand.length; ++i) {
-		rand = Math.floor(Math.random() * 13);
-		userHand[i] = rand;
+		if (userHand[i] < 0) {
+			rand = Math.floor(Math.random() * 13);
+			userHand[i] = rand;
+		}
 	}
 	for (i = 0; i < AIHand.length; ++i) {
-		rand = Math.floor(Math.random() * 13);
-		AIHand[i] = rand;
+		if (AIHand[i] < 0) {
+			rand = Math.floor(Math.random() * 13);
+			AIHand[i] = rand;
+		}
+	}
+	
+	if (round > 0) {
+		redrawCards();
 	}
 	
 	bet();
@@ -410,6 +431,7 @@ function takeTurn() {
 		if (y <= 801 && y >= 639) {
 			if (x <= 181 && x >= 39) {
 				userCard = userHand[0];
+				userHand[0] = -1;
 				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(40, 640, 140, 200);
 				canvas.removeEventListener("mousedown", getPosition, false);
@@ -417,6 +439,7 @@ function takeTurn() {
 			}
 			else if (x <= 336 && x >= 194) {
 				userCard = userHand[1];
+				userHand[0] = -1;
 				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(195, 640, 140, 200);
 				canvas.removeEventListener("mousedown", getPosition, false);
@@ -424,6 +447,7 @@ function takeTurn() {
 			}
 			else if (x <= 491 && x >= 349) {
 				userCard = userHand[2];
+				userHand[0] = -1;
 				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(350, 640, 140, 200);
 				canvas.removeEventListener("mousedown", getPosition, false);
@@ -431,6 +455,7 @@ function takeTurn() {
 			}
 			else if (x <= 648 && x >= 506) {
 				userCard = userHand[3];
+				userHand[0] = -1;
 				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(507, 640, 140, 200);
 				canvas.removeEventListener("mousedown", getPosition, false);
@@ -438,6 +463,7 @@ function takeTurn() {
 			}
 			else if (x <= 803 && x >= 661) {
 				userCard = userHand[4];
+				userHand[0] = -1;
 				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(662, 640, 140, 200);
 				canvas.removeEventListener("mousedown", getPosition, false);
@@ -445,6 +471,7 @@ function takeTurn() {
 			}
 			else if (x <= 958 && x >= 816) {
 				userCard = userHand[5];
+				userHand[0] = -1;
 				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
 				ctx.fillRect(817, 640, 140, 200);
 				canvas.removeEventListener("mousedown", getPosition, false);
@@ -456,8 +483,10 @@ function takeTurn() {
 
 // AI chooses card after user does
 function AIChooseCard() {
+	ctx.fillStyle = "rgba(0, 0, 0, 1)";
 	rand = Math.floor(Math.random() * 6);
 	AICard = AIHand[rand];
+	AIHand[rand] = -1;
 	ctx.drawImage(deck[AICard], 540, 325, 175, 250);
 	switch (rand) {
 		case 0:
@@ -1258,7 +1287,8 @@ function useResult() {
 			ctx.fillStyle = "Gold";
 			theirHP -= betAmount;
 			ctx.fillText("Their HP: " + theirHP, 25, 30);
-			bet();
+			++round;
+			fillHands();
 			break;
 		// Degrades User HP
 		case "loss":
@@ -1266,7 +1296,8 @@ function useResult() {
 			ctx.fillStyle = "Gold";
 			yourHP -= betAmount;
 			ctx.fillText("Your HP: " + yourHP, 25, 880);
-			bet();
+			++round;
+			fillHands();
 			break;
 		// Doubles Bet Amount
 		case "multiply":
@@ -1283,6 +1314,23 @@ function useResult() {
 			yourHP -= Math.floor(betAmount / 2);
 			ctx.fillText("Their HP: " + theirHP, 25, 30);
 			ctx.fillText("Your HP: " + yourHP, 25, 880);
-			bet();
+			++round;
+			fillHands();
 	}
+}
+
+// This replenishes card views
+function redrawCards() {
+	ctx.drawImage(cardBack, 40, 90, 140, 200);
+	ctx.drawImage(cardBack, 195, 90, 140, 200);
+	ctx.drawImage(cardBack, 350, 90, 140, 200);
+	ctx.drawImage(cardBack, 507, 90, 140, 200);
+	ctx.drawImage(cardBack, 662, 90, 140, 200);
+	ctx.drawImage(cardBack, 817, 90, 140, 200);
+	ctx.drawImage(deck[userHand[0]], 40, 640, 140, 200);
+	ctx.drawImage(deck[userHand[1]], 195, 640, 140, 200);
+	ctx.drawImage(deck[userHand[2]], 350, 640, 140, 200);
+	ctx.drawImage(deck[userHand[3]], 507, 640, 140, 200);
+	ctx.drawImage(deck[userHand[4]], 662, 640, 140, 200);
+	ctx.drawImage(deck[userHand[5]], 817, 640, 140, 200);
 }
