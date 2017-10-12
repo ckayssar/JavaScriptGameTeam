@@ -8,8 +8,10 @@ var yourName = "Your Name: ";
 var theirName = "Their Name: ";
 var yourHP = 50;
 var theirHP = 50;
+var AICard;
+var betAmount = 0;
 
-// Images
+// Images and cards
 var cardBack = new Image();
 var exam = new Image();
 var freshman = new Image();
@@ -27,7 +29,22 @@ var prof = new Image();
 cardBack.src = "../images/cardBack.jpg";
 exam.src = "../images/cardExam.jpg";
 freshman.src = "../images/cardFreshman.jpg";
+senior.src = "../images/cardSenior.jpg";
+debt.src = "../images/cardDebt.jpg";
+dog.src = "../images/cardDog.jpg";
+market.src = "../images/cardMarket.jpg";
+office.src = "../images/cardOffice.jpg";
+snow.src = "../images/cardSnow.jpg";
+scholarship.src = "../images/cardScholar.jpg";
+parking.src = "../images/cardParking.jpg";
+GPA.src = "../images/cardGPA.jpg";
+domino.src = "../images/cardDomino.jpg";
+prof.src = "../images/cardProf.jpg";
 
+// The deck
+var deck = [exam, freshman, senior, debt, dog, market, office, snow, scholarship, parking, GPA, domino, prof];
+var userHand = new Array(6);
+var AIHand = new Array(6);
 
 // This is the initial function when the game begins
 $(document).ready(function() {
@@ -40,7 +57,7 @@ $(document).ready(function() {
 	ctx.textAlign = "center";
 	ctx.fillText("Please enter your name", canvas.width/2, canvas.height/2);
 	ctx.font = "20px Helvetica";
-	ctx.fillText("No longer than 30 characters please", canvas.width/2, (canvas.height/2)+35);
+	ctx.fillText("No longer than 60 characters please", canvas.width/2, (canvas.height/2)+35);
 	
 	// To signify you have entered the submit button
 	$("#nameSubmit").mouseenter(function(){
@@ -60,8 +77,8 @@ $(document).ready(function() {
 		if ($("#nameInput").val().length === 0) {
 			alert("Please input some sort of name");
 		}
-		else if ($("#nameInput").val().length > 30) {
-			alert("That's longer than 30 characters buster!");
+		else if ($("#nameInput").val().length > 60) {
+			alert("That's longer than 60 characters buster!");
 		}
 		else {
 			// If name is valid, store it and move on
@@ -166,34 +183,31 @@ function nameAI() {
 			theirName += "Gilgamesh the Destroyer";
 			break;
 		case 1:
-			theirName += "C74F the Hexadecimal";
+			theirName += "C74F the Crusher";
 			break;
 		case 2:
-			theirName += "Cassius the Lumenescent";
+			theirName += "Cassius the Saboteur";
 			break;
 		case 3:
 			theirName += "Arnold the Terminator";
 			break;
 		case 4:
-			theirName += "Hezekiah the Adonis";
+			theirName += "Hezekiah the Invader";
 			break;
 		case 5:
-			theirName += "Ezekiel the Swift";
+			theirName += "Ezekiel the Incinerator";
 			break;
 		case 6:
 			theirName += "Eleazar the Golem";
 			break;
 		case 7:
-			theirName += "Mordecai the Precise";
+			theirName += "Mordecai the Pillager";
 			break;
 		case 8:
-			theirName += "Nebuchadnezzar the Ram";
+			theirName += "Nebuchadnezzar the Raider";
 			break;
 		case 9:
 			theirName += "Sal";
-			break;
-		default:
-			theirName += "He Without a Name";
 	}
 }
 
@@ -261,6 +275,15 @@ function startGame() {
 	ctx.fillStyle = "#FF8C00";
 	ctx.fillText("VS.", canvas.width/2, canvas.height/2);
 	
+	// Bet area
+	ctx.font = "20px Helvetica";
+	ctx.fillStyle = "White";
+	ctx.fillText("Bet Amount", 850, 350);
+	ctx.fillStyle = "Gold";
+	ctx.fillRect(819, 359, 62, 42);
+	ctx.fillStyle = "rgba(0, 0, 0, 1)";
+	ctx.fillRect(820, 360, 60, 40);
+	
 	// Deal cards
 	ctx.drawImage(cardBack, 40, 90, 140, 200);
 	ctx.drawImage(cardBack, 195, 90, 140, 200);
@@ -268,14 +291,64 @@ function startGame() {
 	ctx.drawImage(cardBack, 507, 90, 140, 200);
 	ctx.drawImage(cardBack, 662, 90, 140, 200);
 	ctx.drawImage(cardBack, 817, 90, 140, 200);
-	dealUser();
+	firstDeal();
+	ctx.drawImage(userHand[0], 40, 640, 140, 200);
+	ctx.drawImage(userHand[1], 195, 640, 140, 200);
+	ctx.drawImage(userHand[2], 350, 640, 140, 200);
+	ctx.drawImage(userHand[3], 507, 640, 140, 200);
+	ctx.drawImage(userHand[4], 662, 640, 140, 200);
+	ctx.drawImage(userHand[5], 817, 640, 140, 200);
 }
 
-// This provides a random card
-function randCard() {
-	rand = Math.floor(Math.random() * 13);
+// This makes the initial deal and then moves on
+function firstDeal() {
+	for (i = 0; i < userHand.length; ++i) {
+		rand = Math.floor(Math.random() * 13);
+		userHand[i] = deck[rand];
+	}
+	for (i = 0; i < AIHand.length; ++i) {
+		rand = Math.floor(Math.random() * 13);
+		AIHand[i] = deck[rand];
+	}
+	
+	bet();
+}
+
+function bet() {
+	// AI Bet
+	if (userBet === false) {
+		betAmount = Math.floor(Math.random() * 10) + 1;
+		userBet = true;
+		takeTurn();
+	}
+	else {
+	}
+}
+
+function takeTurn() {
+	ctx.fillStyle = "rgba(0, 0, 0, 1)";
+	
+	//AI chooses card
+	rand = Math.floor(Math.random() * 6);
+	AICard = AIHand[rand];
+	ctx.drawImage(AICard, 540, 325, 175, 250);
 	switch (rand) {
 		case 0:
-			
+			ctx.fillRect(40, 90, 140, 200);
+			break;
+		case 1:
+			ctx.fillRect(195, 90, 140, 200);
+			break;
+		case 2:
+			ctx.fillRect(350, 90, 140, 200);
+			break;
+		case 3:
+			ctx.fillRect(507, 90, 140, 200);
+			break;
+		case 4:
+			ctx.fillRect(662, 90, 140, 200);
+			break;
+		case 5:
+			ctx.fillRect(817, 90, 140, 200);
 	}
 }
