@@ -1,5 +1,5 @@
 body{
-    background-color: #cfff98;
+    background-color: #ffffff;
     width: 100%;
     display: block;
     font-family: Arial, sans-serif;
@@ -93,7 +93,7 @@ article{
 footer{
 	height: 110px;
 	margin-left: -8px;
-	color: #ff0000;
+	color: #ffffff;
     background-color: #0000ff;
     padding: 5px 5px 5px 50px;
 	margin-top: 15px;
