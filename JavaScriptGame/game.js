@@ -11,7 +11,8 @@ var theirHP = 100;
 var userCard;
 var AICard;
 var betAmount = 0;
-var result = "";
+var turnResult = "";
+var gameResult = "";
 var round = 0;
 var canClick = false;
 
@@ -115,7 +116,7 @@ function getPosition(e) {
 			else {
 				userCard = userHand[0];
 				userHand[0] = -1;
-				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.drawImage(deck[userCard], 315, 325, 175, 250);
 				ctx.fillRect(40, 640, 140, 200);
 				canClick = false;
 				AIChooseCard();
@@ -129,7 +130,7 @@ function getPosition(e) {
 			else {
 				userCard = userHand[1];
 				userHand[1] = -1;
-				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.drawImage(deck[userCard], 315, 325, 175, 250);
 				ctx.fillRect(195, 640, 140, 200);
 				canClick = false;
 				AIChooseCard();
@@ -143,7 +144,7 @@ function getPosition(e) {
 			else {
 				userCard = userHand[2];
 				userHand[2] = -1;
-				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.drawImage(deck[userCard], 315, 325, 175, 250);
 				ctx.fillRect(350, 640, 140, 200);
 				canClick = false;
 				AIChooseCard();
@@ -157,7 +158,7 @@ function getPosition(e) {
 			else {
 				userCard = userHand[3];
 				userHand[3] = -1;
-				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.drawImage(deck[userCard], 315, 325, 175, 250);
 				ctx.fillRect(507, 640, 140, 200);
 				canClick = false;
 				AIChooseCard();
@@ -171,7 +172,7 @@ function getPosition(e) {
 			else {
 				userCard = userHand[4];
 				userHand[4] = -1;
-				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.drawImage(deck[userCard], 315, 325, 175, 250);
 				ctx.fillRect(662, 640, 140, 200);
 				canClick = false;
 				AIChooseCard();
@@ -185,7 +186,7 @@ function getPosition(e) {
 			else {
 				userCard = userHand[5];
 				userHand[5] = -1;
-				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.drawImage(deck[userCard], 315, 325, 175, 250);
 				ctx.fillRect(817, 640, 140, 200);
 				canClick = false;
 				AIChooseCard();
@@ -323,13 +324,13 @@ function startGame() {
 	ctx.fillStyle = "Gold";
 	ctx.fillRect(24, 49, 952, 252);
 	ctx.fillRect(24, 599, 952, 252);
-	ctx.fillRect(284, 324, 177, 252);
-	ctx.fillRect(539, 324, 177, 252);
+	ctx.fillRect(314, 324, 177, 252);
+	ctx.fillRect(569, 324, 177, 252);
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
 	ctx.fillRect(25, 50, 950, 250);
 	ctx.fillRect(25, 600, 950, 250);
-	ctx.fillRect(285, 325, 175, 250);
-	ctx.fillRect(540, 325, 175, 250);
+	ctx.fillRect(315, 325, 175, 250);
+	ctx.fillRect(570, 325, 175, 250);
 	ctx.fillStyle = "Gold";
 	ctx.fillRect(39, 89, 142, 202);
 	ctx.fillRect(194, 89, 142, 202);
@@ -371,11 +372,17 @@ function startGame() {
 	ctx.textAlign = "center";
 	ctx.fillText("THEIR HAND", canvas.width/2, 75);
 	ctx.fillText("YOUR HAND", canvas.width/2, 625);
-
+	ctx.fillText("YOUR", 400, 400);
+	ctx.fillText("CARD", 400, 420);
+	ctx.fillText("SPACE", 400, 440);
+	ctx.fillText("THEIR", 657, 400);
+	ctx.fillText("CARD", 657, 420);
+	ctx.fillText("SPACE", 657, 440);
+	
 	// Versus logo
 	ctx.font = "40px Impact";
 	ctx.fillStyle = "#FF8C00";
-	ctx.fillText("VS.", canvas.width/2, canvas.height/2);
+	ctx.fillText("VS.", canvas.width/2 + 30, canvas.height/2);
 	
 	// Bet area
 	ctx.fillStyle = "Gold";
@@ -394,6 +401,13 @@ function startGame() {
 	ctx.fillStyle = "Gold"
 	ctx.font = "25px Impact";
 	ctx.fillText(round, 850, 490);
+	
+	// Result section
+	ctx.font = "20px Helvetica";
+	ctx.fillText("Result", 135, 325);
+	ctx.fillRect(14, 334, 252, 252);
+	ctx.fillStyle = "rgba(0, 0, 0, 1)";
+	ctx.fillRect(15, 335, 250, 250);
 	
 	// Deal cards
 	fillHands();
@@ -439,8 +453,6 @@ function fillHands() {
 function bet() {
 	// Resets central card area and round number
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
-	ctx.fillRect(285, 325, 175, 250);
-	ctx.fillRect(540, 325, 175, 250);
 	ctx.fillRect(820, 460, 60, 40);
 	ctx.fillStyle = "Gold"
 	ctx.textAlign = "center";
@@ -545,7 +557,7 @@ function AIChooseCard() {
 	
 	AICard = AIHand[rand];
 	AIHand[rand] = -1;
-	ctx.drawImage(deck[AICard], 540, 325, 175, 250);
+	ctx.drawImage(deck[AICard], 570, 325, 175, 250);
 	switch (rand) {
 		case 0:
 			ctx.fillRect(40, 90, 140, 200);
@@ -580,55 +592,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Freshman case
 				case 1:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Senior case
 				case 2:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Debt case
 				case 3:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Dog case
 				case 4:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Market case
 				case 5:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Office case
 				case 6:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Snow case
 				case 7:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Scholarship case
 				case 8:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Parking case
 				case 9:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// GPA case
 				case 10:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Domino's case
 				case 11:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Prof case
 				case 12:
-					result = "multiply";
+					turnResult = "multiply";
 			}
 			break;
 			
@@ -638,55 +650,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Freshman case
 				case 1:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Senior case
 				case 2:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Debt case
 				case 3:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Dog case
 				case 4:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Market case
 				case 5:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Office case
 				case 6:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Snow case
 				case 7:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Scholarship case
 				case 8:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Parking case
 				case 9:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// GPA case
 				case 10:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Domino's case
 				case 11:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Prof case
 				case 12:
-					result = "loss";
+					turnResult = "loss";
 			}
 			break;
 		
@@ -696,55 +708,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Freshman case
 				case 1:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Senior case
 				case 2:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Debt case
 				case 3:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Dog case
 				case 4:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Market case
 				case 5:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Office case
 				case 6:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Snow case
 				case 7:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Scholarship case
 				case 8:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Parking case
 				case 9:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// GPA case
 				case 10:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Domino's case
 				case 11:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Prof case
 				case 12:
-					result = "loss";
+					turnResult = "loss";
 			}
 			break;
 			
@@ -754,55 +766,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Freshman case
 				case 1:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Senior case
 				case 2:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Debt case
 				case 3:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Dog case
 				case 4:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Market case
 				case 5:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Office case
 				case 6:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Snow case
 				case 7:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Scholarship case
 				case 8:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Parking case
 				case 9:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// GPA case
 				case 10:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Domino's case
 				case 11:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Prof case
 				case 12:
-					result = "multiply";
+					turnResult = "multiply";
 			}
 			break;
 		
@@ -812,55 +824,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Freshman case
 				case 1:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Senior case
 				case 2:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Debt case
 				case 3:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Dog case
 				case 4:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Market case
 				case 5:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Office case
 				case 6:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Snow case
 				case 7:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Scholarship case
 				case 8:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Parking case
 				case 9:
-					result = "win";
+					turnResult = "win";
 					break;
 				// GPA case
 				case 10:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Domino's case
 				case 11:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Prof case
 				case 12:
-					result = "win";
+					turnResult = "win";
 			}
 			break;
 			
@@ -870,55 +882,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Freshman case
 				case 1:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Senior case
 				case 2:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Debt case
 				case 3:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Dog case
 				case 4:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Market case
 				case 5:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Office case
 				case 6:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Snow case
 				case 7:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Scholarship case
 				case 8:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Parking case
 				case 9:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// GPA case
 				case 10:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Domino's case
 				case 11:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Prof case
 				case 12:
-					result = "unrelate";
+					turnResult = "unrelate";
 			}
 			break;
 			
@@ -928,55 +940,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Freshman case
 				case 1:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Senior case
 				case 2:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Debt case
 				case 3:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Dog case
 				case 4:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Market case
 				case 5:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Office case
 				case 6:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Snow case
 				case 7:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Scholarship case
 				case 8:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Parking case
 				case 9:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// GPA case
 				case 10:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Domino's case
 				case 11:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Prof case
 				case 12:
-					result = "loss";
+					turnResult = "loss";
 			}
 			break;
 			
@@ -986,55 +998,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Freshman case
 				case 1:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Senior case
 				case 2:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Debt case
 				case 3:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Dog case
 				case 4:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Market case
 				case 5:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Office case
 				case 6:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Snow case
 				case 7:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Scholarship case
 				case 8:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Parking case
 				case 9:
-					result = "win";
+					turnResult = "win";
 					break;
 				// GPA case
 				case 10:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Domino's case
 				case 11:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Prof case
 				case 12:
-					result = "win";
+					turnResult = "win";
 			}
 			break;
 		
@@ -1044,55 +1056,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Freshman case
 				case 1:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Senior case
 				case 2:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Debt case
 				case 3:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Dog case
 				case 4:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Market case
 				case 5:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Office case
 				case 6:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Snow case
 				case 7:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Scholarship case
 				case 8:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Parking case
 				case 9:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// GPA case
 				case 10:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Domino's case
 				case 11:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Prof case
 				case 12:
-					result = "unrelate";
+					turnResult = "unrelate";
 			}
 			break;
 			
@@ -1102,55 +1114,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Freshman case
 				case 1:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Senior case
 				case 2:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Debt case
 				case 3:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Dog case
 				case 4:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Market case
 				case 5:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Office case
 				case 6:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Snow case
 				case 7:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Scholarship case
 				case 8:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Parking case
 				case 9:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// GPA case
 				case 10:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Domino's case
 				case 11:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Prof case
 				case 12:
-					result = "win";
+					turnResult = "win";
 			}
 			break;
 			
@@ -1160,55 +1172,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Freshman case
 				case 1:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Senior case
 				case 2:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Debt case
 				case 3:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Dog case
 				case 4:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Market case
 				case 5:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Office case
 				case 6:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Snow case
 				case 7:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Scholarship case
 				case 8:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Parking case
 				case 9:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// GPA case
 				case 10:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Domino's case
 				case 11:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Prof case
 				case 12:
-					result = "multiply";
+					turnResult = "multiply";
 			}
 			break;
 			
@@ -1218,55 +1230,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Freshman case
 				case 1:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Senior case
 				case 2:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Debt case
 				case 3:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Dog case
 				case 4:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Market case
 				case 5:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Office case
 				case 6:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Snow case
 				case 7:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Scholarship case
 				case 8:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Parking case
 				case 9:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// GPA case
 				case 10:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Domino's case
 				case 11:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Prof case
 				case 12:
-					result = "unrelate";
+					turnResult = "unrelate";
 			}
 			break;
 			
@@ -1276,55 +1288,55 @@ function makeResult() {
 			switch(AICard) {
 				// Exam case
 				case 0:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Freshman case
 				case 1:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Senior case
 				case 2:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Debt case
 				case 3:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Dog case
 				case 4:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Market case
 				case 5:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Office case
 				case 6:
-					result = "win";
+					turnResult = "win";
 					break;
 				// Snow case
 				case 7:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// Scholarship case
 				case 8:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Parking case
 				case 9:
-					result = "loss";
+					turnResult = "loss";
 					break;
 				// GPA case
 				case 10:
-					result = "multiply";
+					turnResult = "multiply";
 					break;
 				// Domino's case
 				case 11:
-					result = "unrelate";
+					turnResult = "unrelate";
 					break;
 				// Prof case
 				case 12:
-					result = "multiply";
+					turnResult = "multiply";
 			}
 	}
 	
@@ -1336,10 +1348,10 @@ function useResult() {
 	ctx.font = "20px Helvetica";
 	ctx.textAlign = "left";
 	ctx.fillStyle = "rgba(75, 0, 0, 1)";
-	alert(result);
+	alert(turnResult);
 	
 	// Affects the screen and stats
-	switch(result) {
+	switch(turnResult) {
 		// Degrades AI HP
 		case "win":
 			ctx.fillRect(0, 0, 290, 32);
@@ -1347,7 +1359,7 @@ function useResult() {
 			theirHP -= betAmount;
 			ctx.fillText("Their HP: " + theirHP, 25, 30);
 			++round;
-			fillHands();
+			didWin();
 			break;
 		// Degrades User HP
 		case "loss":
@@ -1356,7 +1368,7 @@ function useResult() {
 			yourHP -= betAmount;
 			ctx.fillText("Your HP: " + yourHP, 25, 880);
 			++round;
-			fillHands();
+			didWin();
 			break;
 		// Doubles Bet Amount
 		case "multiply":
@@ -1374,7 +1386,7 @@ function useResult() {
 			ctx.fillText("Their HP: " + theirHP, 25, 30);
 			ctx.fillText("Your HP: " + yourHP, 25, 880);
 			++round;
-			fillHands();
+			didWin();
 	}
 }
 
@@ -1394,4 +1406,39 @@ function redrawCards() {
 	ctx.drawImage(deck[userHand[5]], 817, 640, 140, 200);
 	
 	bet();
+}
+
+// This checks if the game has ended
+function didWin() {
+	if (yourHP < 1) {
+		// Check both loss
+		if (theirHP < 1) {
+			gameResult = "bothLose";
+			endGame();
+		}
+		else {
+			gameResult = "lose";
+			endGame();
+		}
+	}
+	else if (theirHP < 1) {
+		gameResult = "win";
+		endGame();
+	}
+	
+	fillHands();
+}
+
+// This ends the game
+function endGame() {
+	switch(gameResult) {
+		case "win":
+			// Do a thing
+			break;
+		case "lose":
+			// Do a thing
+			break;
+		case "bothLose":
+			// Do a thing
+	}
 }
