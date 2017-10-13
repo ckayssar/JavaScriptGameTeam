@@ -15,6 +15,7 @@ var turnResult = "";
 var gameResult = "";
 var round = 0;
 var canClick = false;
+var resultText = "";
 
 // Images and cards
 var cardBack = new Image();
@@ -593,54 +594,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "multiply";
+					resultText = "Two exams in the same day...";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "win";
+					resultText = "The first exam never goes well";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "loss";
+					resultText = "Seniors know this dance";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "multiply";
+					resultText = "What do I stress over?? Exams or debt??";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "loss";
+					resultText = "The dog ate my exam";
 					break;
 				// Market case
 				case 5:
-					turnResult = "unrelate";
+					turnResult = "loss";
+					resultText = "I too eat ice cream when I'm sad";
 					break;
 				// Office case
 				case 6:
 					turnResult = "loss";
+					resultText = "The best study buddy is the professor";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "loss";
+					resultText = "No exam today!";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "unrelate";
+					resultText = "I got nothing";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "multiply";
+					resultText = "The only thing worse than parking is parking for the exam";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "multiply";
+					resultText = "These things pile up you know";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "loss";
+					resultText = "You won't remember the exam after this pizza";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "multiply";
+					resultText = "I heard he just gets these off the internet";
 			}
 			break;
 			
@@ -651,54 +665,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "loss";
+					resultText = "The first exam never goes well";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "multiply";
+					resultText = "Dear God their lanyards are interlocking!";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "loss";
+					resultText = "Yeah whatever kid";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "loss";
+					resultText = "It's never too early to have loans";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "loss";
+					resultText = "Good luck leaving this good boy";
 					break;
 				// Market case
 				case 5:
 					turnResult = "loss";
+					resultText = "Is that fully cooked?";
 					break;
 				// Office case
 				case 6:
 					turnResult = "multiply";
+					resultText = "That's a recipe for early success";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "multiply";
+					resultText = "Everyone loves snow";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "multiply";
+					resultText = "Don't lose it!";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "unrelate";
+					resultText = "You don't know the struggle yet";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "loss";
+					resultText = "Rough start";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "multiply";
+					resultText = "Gotta avoid Mines Market somehow";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "loss";
+					resultText = "Good luck learning stuff";
 			}
 			break;
 		
@@ -709,54 +736,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "win";
+					resultText = "Seniors know this dance";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "win";
+					resultText = "Yeah whatever kid";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "multiply";
+					resultText = "Party!";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "loss";
+					resultText = "Remember how you paid for school?";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "loss";
+					resultText = "I ain't goin to school now";
 					break;
 				// Market case
 				case 5:
 					turnResult = "unrelate";
+					resultText = "I haven't set foot in there in years...";
 					break;
 				// Office case
 				case 6:
 					turnResult = "multiply";
+					resultText = "Going here is like a part-time job";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "multiply";
+					resultText = "That means I don't have to move";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "multiply";
+					resultText = "Good job keeping it around";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "loss";
+					resultText = "Can they just build a parking garage already?";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "loss";
+					resultText = "What do you mean I can't get an internship?";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "multiply";
+					resultText = "I live off this";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "loss";
+					resultText = "JUST TEACH ME SOMETHING";
 			}
 			break;
 			
@@ -767,54 +807,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "multiply";
+					resultText = "What do I stress over?? Exams or debt??";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "win";
+					resultText = "It's never too early to have loans";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "win";
+					resultText = "Remember how you paid for school?";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "multiply";
+					resultText = "I am infinitely poor";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "loss";
+					resultText = "It's okay he's so cute!";
 					break;
 				// Market case
 				case 5:
 					turnResult = "multiply";
+					resultText = "I would have less debt without a meal plan";
 					break;
 				// Office case
 				case 6:
 					turnResult = "unrelate";
+					resultText = "My econ TA won't help me with debt";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "unrelate";
+					resultText = "Ah look at all that white, fluffy debt";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "loss";
+					resultText = "Hey, this helps";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "unrelate";
+					resultText = "You can't park on debt";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "multiply";
+					resultText = "Looks like I'll be here a little longer...";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "loss";
+					resultText = "What debt? I'm eating";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "multiply";
+					resultText = "Guess how he funds research";
 			}
 			break;
 		
@@ -825,54 +878,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "win";
+					resultText = "The dog ate my exam";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "win";
+					resultText = "Good luck leaving this good boy";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "win";
+					resultText = "I ain't goin to school now";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "win";
+					resultText = "It's okay he's so cute!";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "multiply";
+					resultText = "This is too much cute in one space";
 					break;
 				// Market case
 				case 5:
 					turnResult = "loss";
+					resultText = "Dogs aren't allowed in Mines Market ):";
 					break;
 				// Office case
 				case 6:
 					turnResult = "win";
+					resultText = "Office hours? But dog";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "multiply";
+					resultText = "He like snow";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "unrelate";
+					resultText = "Is there a dog scholarship?";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "win";
+					resultText = "I'll just walk to school with him";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "win";
+					resultText = "DOG is the better 3 letters";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "win";
+					resultText = "The dog ate the pizza";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "win";
+					resultText = "The only thing better than research";
 			}
 			break;
 			
@@ -883,54 +949,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "unrelate";
+					resultText = "I too eat ice cream when I'm sad";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "win";
+					resultText = "Is that fully cooked?";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "unrelate";
+					resultText = "I haven't set foot in there in years...";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "multiply";
+					resultText = "I would have less debt without a meal plan";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "win";
+					resultText = "Dogs aren't allowed in Mines Market ):";
 					break;
 				// Market case
 				case 5:
 					turnResult = "multiply";
+					resultText = "Ugh why is there two";
 					break;
 				// Office case
 				case 6:
 					turnResult = "unrelate";
+					resultText = "Office hours is not gonna be here";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "unrelate";
+					resultText = "They ain't got snow days";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "unrelate";
+					resultText = "I don't know";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "unrelate";
+					resultText = "I've never seen anyone park on campus for Mines Market";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "win";
+					resultText = "Eat those sorrows friend";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "loss";
+					resultText = "Yeah I prefer one over the other fight me";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "unrelate";
+					resultText = "There is no research here";
 			}
 			break;
 			
@@ -941,54 +1020,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "win";
+					resultText = "The best study buddy is the professor";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "multiply";
+					resultText = "That's a recipe for early success";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "multiply";
+					resultText = "Going here is like a part-time job";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "unrelate";
+					resultText = "My econ TA won't help me with debt";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "loss";
+					resultText = "Office hours? But dog";
 					break;
 				// Market case
 				case 5:
 					turnResult = "unrelate";
+					resultText = "Office hours is not gonna be here";
 					break;
 				// Office case
 				case 6:
 					turnResult = "multiply";
+					resultText = "I live here now";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "loss";
+					resultText = "Office hours is cancelled";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "unrelate";
+					resultText = "Wrong office";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "loss";
+					resultText = "Is there any way to park near office hours??";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "win";
+					resultText = "1.5 no longer!";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "multiply";
+					resultText = "Pizza HW party!";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "loss";
+					resultText = "Does he actually go to these?";
 			}
 			break;
 			
@@ -999,54 +1091,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "win";
+					resultText = "No exam today!";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "multiply";
+					resultText = "Everyone loves snow";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "multiply";
+					resultText = "That means I don't have to move";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "unrelate";
+					resultText = "Ah look at all that white, fluffy debt";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "multiply";
+					resultText = "He like snow";
 					break;
 				// Market case
 				case 5:
 					turnResult = "unrelate";
+					resultText = "They ain't got snow days";
 					break;
 				// Office case
 				case 6:
 					turnResult = "win";
+					resultText = "Office hours is cancelled";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "multiply";
+					resultText = "TWO snow days??";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "multiply";
+					resultText = "This is literally the best";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "win";
+					resultText = "No school, no parking";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "win";
+					resultText = "My GPA doesn't exist if school's cancelled";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "multiply";
+					resultText = "I can't really go anywhere so...";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "win";
+					resultText = "He doesn't exist if school's cancelled";
 			}
 			break;
 		
@@ -1057,54 +1162,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "unrelate";
+					resultText = "I got nothing";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "multiply";
+					resultText = "Don't lose it!";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "multiply";
+					resultText = "Good job keeping it around";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "win";
+					resultText = "Hey, this helps";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "unrelate";
+					resultText = "Is there a dog scholarship?";
 					break;
 				// Market case
 				case 5:
 					turnResult = "unrelate";
+					resultText = "I don't know";
 					break;
 				// Office case
 				case 6:
 					turnResult = "unrelate";
+					resultText = "Wrong office";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "multiply";
+					resultText = "This is literally the best";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "multiply";
+					resultText = "Money, money, money, MONEY";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "unrelate";
+					resultText = "I've never parked on a scholarship before";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "loss";
+					resultText = "So much for that scholarship";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "multiply";
+					resultText = "Now you can buy more Domino's";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "unrelate";
+					resultText = "Meh";
 			}
 			break;
 			
@@ -1115,54 +1233,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "multiply";
+					resultText = "The only thing worse than parking is parking for the exam";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "unrelate";
+					resultText = "You don't know the struggle yet";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "win";
+					resultText = "Can they just build a parking garage already?";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "unrelate";
+					resultText = "You can't park on debt";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "loss";
+					resultText = "I'll just walk to school with him";
 					break;
 				// Market case
 				case 5:
 					turnResult = "unrelate";
+					resultText = "I've never seen anyone park on campus for Mines Market";
 					break;
 				// Office case
 				case 6:
 					turnResult = "win";
+					resultText = "Is there any way to park near office hours??";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "loss";
+					resultText = "No school, no parking";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "unrelate";
+					resultText = "I've never parked on a scholarship before";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "multiply";
+					resultText = "Hey, more parking";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "unrelate";
+					resultText = "Grade Parking Average?";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "win";
+					resultText = "Pizza doesn't care about my grades";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "win";
+					resultText = "Even he has to try and park on campus";
 			}
 			break;
 			
@@ -1173,54 +1304,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "multiply";
+					resultText = "These things pile up you know";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "win";
+					resultText = "Rough start";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "win";
+					resultText = "What do you mean I can't get an internship?";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "multiply";
+					resultText = "Looks like I'll be here a little longer...";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "loss";
+					resultText = "DOG is the better 3 letters";
 					break;
 				// Market case
 				case 5:
 					turnResult = "loss";
+					resultText = "Eat those sorrows friend";
 					break;
 				// Office case
 				case 6:
 					turnResult = "loss";
+					resultText = "1.5 no longer!";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "loss";
+					resultText = "My GPA doesn't exist if school's cancelled";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "win";
+					resultText = "So much for that scholarship";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "unrelate";
+					resultText = "Grade Parking Average?";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "multiply";
+					resultText = "Existence is pain";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "loss";
+					resultText = "Maybe they'll hire me...";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "multiply";
+					resultText = "I don't wanna its his fault but...";
 			}
 			break;
 			
@@ -1231,54 +1375,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "win";
+					resultText = "You won't remember the exam after this pizza";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "multiply";
+					resultText = "Gotta avoid Mines Market somehow";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "multiply";
+					resultText = "I live off this";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "win";
+					resultText = "What debt? I'm eating";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "loss";
+					resultText = "The dog ate the pizza";
 					break;
 				// Market case
 				case 5:
 					turnResult = "win";
+					resultText = "Yeah I prefer one over the other fight me";
 					break;
 				// Office case
 				case 6:
 					turnResult = "multiply";
+					resultText = "Pizza HW party!";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "multiply";
+					resultText = "I can't really go anywhere so...";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "multiply";
+					resultText = "Now you can buy more Domino's";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "loss";
+					resultText = "Pizza doesn't care about my grades";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "win";
+					resultText = "Maybe they'll hire me...";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "multiply";
+					resultText = "This is actually all I eat";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "unrelate";
+					resultText = "I'm not sure he eats anything but coffee";
 			}
 			break;
 			
@@ -1289,54 +1446,67 @@ function makeResult() {
 				// Exam case
 				case 0:
 					turnResult = "multiply";
+					resultText = "I heard he just gets these off the internet";
 					break;
 				// Freshman case
 				case 1:
 					turnResult = "win";
+					resultText = "Good luck learning stuff";
 					break;
 				// Senior case
 				case 2:
 					turnResult = "win";
+					resultText = "JUST TEACH ME SOMETHING";
 					break;
 				// Debt case
 				case 3:
 					turnResult = "multiply";
+					resultText = "Guess how he funds research";
 					break;
 				// Dog case
 				case 4:
 					turnResult = "loss";
+					resultText = "The only thing better than research";
 					break;
 				// Market case
 				case 5:
 					turnResult = "unrelate";
+					resultText = "There is no research here";
 					break;
 				// Office case
 				case 6:
 					turnResult = "win";
+					resultText = "Does he actually go to these?";
 					break;
 				// Snow case
 				case 7:
 					turnResult = "loss";
+					resultText = "He doesn't exist if school's cancelled";
 					break;
 				// Scholarship case
 				case 8:
 					turnResult = "unrelate";
+					resultText = "Meh";
 					break;
 				// Parking case
 				case 9:
 					turnResult = "loss";
+					resultText = "Even he has to try and park on campus";
 					break;
 				// GPA case
 				case 10:
 					turnResult = "multiply";
+					resultText = "I don't wanna its his fault but...";
 					break;
 				// Domino's case
 				case 11:
 					turnResult = "unrelate";
+					resultText = "I'm not sure he eats anything but coffee";
 					break;
 				// Prof case
 				case 12:
 					turnResult = "multiply";
+					resultText = "I guess all my classes are F's now";
 			}
 	}
 	
@@ -1348,7 +1518,6 @@ function useResult() {
 	ctx.font = "20px Helvetica";
 	ctx.textAlign = "left";
 	ctx.fillStyle = "rgba(75, 0, 0, 1)";
-	alert(turnResult);
 	
 	// Affects the screen and stats
 	switch(turnResult) {
