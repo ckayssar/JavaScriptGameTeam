@@ -16,6 +16,7 @@ var gameResult = "";
 var round = 0;
 var canClick = false;
 var resultText = "";
+var yourCardText = "";
 
 // Images and cards
 var cardBack = new Image();
@@ -589,6 +590,7 @@ function makeResult() {
 		
 		// Exam case
 		case 0:
+			yourCardText = "Exam";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -660,6 +662,7 @@ function makeResult() {
 			
 		// Freshman case
 		case 1:
+			yourCardText = "Freshman";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -731,6 +734,7 @@ function makeResult() {
 		
 		// Senior case
 		case 2:
+			yourCardText = "Graduating Senior";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -802,6 +806,7 @@ function makeResult() {
 			
 		// Debt case
 		case 3:
+			yourCardText = "Debt";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -873,6 +878,7 @@ function makeResult() {
 		
 		// Dog case
 		case 4:
+			yourCardText = "Dog";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -944,6 +950,7 @@ function makeResult() {
 			
 		// Market case
 		case 5:
+			yourCardText = "Mines Market";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -1015,6 +1022,7 @@ function makeResult() {
 			
 		// Office case
 		case 6:
+			yourCardText = "Office Hours";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -1086,6 +1094,7 @@ function makeResult() {
 			
 		// Snow case
 		case 7:
+			yourCardText = "Snow Day";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -1157,6 +1166,7 @@ function makeResult() {
 		
 		// Scholarship case
 		case 8:
+			yourCardText = "Scholarship";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -1228,6 +1238,7 @@ function makeResult() {
 			
 		// Parking case
 		case 9:
+			yourCardText = "Parking";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -1299,6 +1310,7 @@ function makeResult() {
 			
 		// GPA case
 		case 10:
+			yourCardText = "1.5 GPA";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -1370,6 +1382,7 @@ function makeResult() {
 			
 		// Domino's case
 		case 11:
+			yourCardText = "Domino's";
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -1441,6 +1454,7 @@ function makeResult() {
 			
 		// Prof case
 		case 12:
+			yourCardText = '"I Prefer Research"\n' + 'Professor';
 			// Inner switch
 			switch(AICard) {
 				// Exam case
@@ -1518,9 +1532,13 @@ function useResult() {
 	// Refresh result box
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
 	ctx.fillRect(15, 335, 250, 250);
+	ctx.fillStyle = "Gold";
+	ctx.textAlign = "center";
+	ctx.font = "16px Helvetica";
+	ctx.fillText("Your card: " + yourCardText, 135, 385);
 	ctx.font = "20px Helvetica";
-	ctx.textAlign = "left";
 	ctx.fillStyle = "rgba(75, 0, 0, 1)";
+	ctx.textAlign = "left";
 	
 	// Affects the screen and stats
 	switch(turnResult) {
