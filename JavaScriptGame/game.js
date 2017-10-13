@@ -13,6 +13,7 @@ var AICard;
 var betAmount = 0;
 var result = "";
 var round = 0;
+var canClick = false;
 
 // Images and cards
 var cardBack = new Image();
@@ -95,6 +96,104 @@ $(document).ready(function() {
 	});
 });
 
+canvas.addEventListener("mousedown", getPosition);
+	
+function getPosition(e) {
+	if (canClick == false) {
+		return;
+	}
+	var fr = canvas.getBoundingClientRect();
+	var x = e.x - fr.left - 0.5;
+	var y = e.y - fr.top - 0.203125;
+	
+	if (y <= 801 && y >= 639) {
+		if (x <= 181 && x >= 39) {
+			if (userHand[0] == -1) {
+				alert("Please choose another card");
+				takeTurn();
+			}
+			else {
+				userCard = userHand[0];
+				userHand[0] = -1;
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.fillRect(40, 640, 140, 200);
+				canClick = false;
+				AIChooseCard();
+			}
+		}
+		else if (x <= 336 && x >= 194) {
+			if (userHand[1] == -1) {
+				alert("Please choose another card");
+				takeTurn();
+			}
+			else {
+				userCard = userHand[1];
+				userHand[1] = -1;
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.fillRect(195, 640, 140, 200);
+				canClick = false;
+				AIChooseCard();
+			}
+		}
+		else if (x <= 491 && x >= 349) {
+			if (userHand[2] == -1) {
+				alert("Please choose another card");
+				takeTurn();
+			}
+			else {
+				userCard = userHand[2];
+				userHand[2] = -1;
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.fillRect(350, 640, 140, 200);
+				canClick = false;
+				AIChooseCard();
+			}	
+		}
+		else if (x <= 648 && x >= 506) {
+			if (userHand[3] == -1) {
+				alert("Please choose another card");
+				takeTurn();
+			}
+			else {
+				userCard = userHand[3];
+				userHand[3] = -1;
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.fillRect(507, 640, 140, 200);
+				canClick = false;
+				AIChooseCard();
+			}
+		}
+		else if (x <= 803 && x >= 661) {
+			if (userHand[4] == -1) {
+				alert("Please choose another card");
+				takeTurn();
+			}
+			else {
+				userCard = userHand[4];
+				userHand[4] = -1;
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.fillRect(662, 640, 140, 200);
+				canClick = false;
+				AIChooseCard();
+			}
+		}
+		else if (x <= 958 && x >= 816) {
+			if (userHand[5] == -1) {
+				alert("Please choose another card");
+				takeTurn();
+			}
+			else {
+				userCard = userHand[5];
+				userHand[5] = -1;
+				ctx.drawImage(deck[userCard], 285, 325, 175, 250);
+				ctx.fillRect(817, 640, 140, 200);
+				canClick = false;
+				AIChooseCard();
+			}
+		}
+	}
+}
+	
 // Player chooses heads or tails
 function coinChoose() {
 	// Text for UI
@@ -421,7 +520,7 @@ function bet() {
 	}
 }
 
-// This handles the User choosing a card
+// This handles filling out bet data
 function takeTurn() {
 	// Fill out bet amount
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
@@ -431,109 +530,8 @@ function takeTurn() {
 	ctx.font = "25px Impact";
 	ctx.fillText(betAmount, 850, 390);
 	ctx.fillStyle = "rgba(0, 0, 0, 1)";
-	
-	canvas.addEventListener("mousedown", getPosition);
-	
-	function getPosition(e) {
-		var fr = canvas.getBoundingClientRect();
-		var x = e.x - fr.left - 0.5;
-		var y = e.y - fr.top - 0.203125;
-		
-		if (y <= 801 && y >= 639) {
-			if (x <= 181 && x >= 39) {
-				if (userHand[0] == -1) {
-					alert("Please choose another card");
-					canvas.removeEventListener("mousedown", getPosition);
-					takeTurn();
-				}
-				else {
-					userCard = userHand[0];
-					userHand[0] = -1;
-					ctx.drawImage(deck[userCard], 285, 325, 175, 250);
-					ctx.fillRect(40, 640, 140, 200);
-					canvas.removeEventListener("mousedown", getPosition);
-					AIChooseCard();
-				}
-			}
-			else if (x <= 336 && x >= 194) {
-				if (userHand[1] == -1) {
-					alert("Please choose another card");
-					canvas.removeEventListener("mousedown", getPosition);
-					takeTurn();
-				}
-				else {
-					userCard = userHand[1];
-					userHand[1] = -1;
-					ctx.drawImage(deck[userCard], 285, 325, 175, 250);
-					ctx.fillRect(195, 640, 140, 200);
-					canvas.removeEventListener("mousedown", getPosition);
-					AIChooseCard();
-				}
-			}
-			else if (x <= 491 && x >= 349) {
-				if (userHand[2] == -1) {
-					alert("Please choose another card");
-					canvas.removeEventListener("mousedown", getPosition);
-					takeTurn();
-				}
-				else {
-					userCard = userHand[2];
-					userHand[2] = -1;
-					ctx.drawImage(deck[userCard], 285, 325, 175, 250);
-					ctx.fillRect(350, 640, 140, 200);
-					canvas.removeEventListener("mousedown", getPosition);
-					AIChooseCard();
-				}	
-			}
-			else if (x <= 648 && x >= 506) {
-				if (userHand[3] == -1) {
-					alert("Please choose another card");
-					canvas.removeEventListener("mousedown", getPosition);
-					takeTurn();
-				}
-				else {
-					userCard = userHand[3];
-					userHand[3] = -1;
-					ctx.drawImage(deck[userCard], 285, 325, 175, 250);
-					ctx.fillRect(507, 640, 140, 200);
-					canvas.removeEventListener("mousedown", getPosition);
-					AIChooseCard();
-				}
-			}
-			else if (x <= 803 && x >= 661) {
-				if (userHand[4] == -1) {
-					alert("Please choose another card");
-					canvas.removeEventListener("mousedown", getPosition);
-					takeTurn();
-				}
-				else {
-					userCard = userHand[4];
-					userHand[4] = -1;
-					ctx.drawImage(deck[userCard], 285, 325, 175, 250);
-					ctx.fillRect(662, 640, 140, 200);
-					canvas.removeEventListener("mousedown", getPosition);
-					AIChooseCard();
-				}
-			}
-			else if (x <= 958 && x >= 816) {
-				if (userHand[5] == -1) {
-					alert("Please choose another card");
-					canvas.removeEventListener("mousedown", getPosition);
-					takeTurn();
-				}
-				else {
-					userCard = userHand[5];
-					userHand[5] = -1;
-					ctx.drawImage(deck[userCard], 285, 325, 175, 250);
-					ctx.fillRect(817, 640, 140, 200);
-					canvas.removeEventListener("mousedown", getPosition);
-					AIChooseCard();
-				}
-			}
-		}
-	}
+	canClick = true;
 }
-
 
 // AI chooses card after user does
 function AIChooseCard() {
