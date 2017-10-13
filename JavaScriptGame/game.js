@@ -1515,6 +1515,9 @@ function makeResult() {
 
 // This handles what a result actually does
 function useResult() {
+	// Refresh result box
+	ctx.fillStyle = "rgba(0, 0, 0, 1)";
+	ctx.fillRect(15, 335, 250, 250);
 	ctx.font = "20px Helvetica";
 	ctx.textAlign = "left";
 	ctx.fillStyle = "rgba(75, 0, 0, 1)";
@@ -1527,6 +1530,9 @@ function useResult() {
 			ctx.fillStyle = "Gold";
 			theirHP -= betAmount;
 			ctx.fillText("Their HP: " + theirHP, 25, 30);
+			ctx.textAlign = "center";
+			ctx.font = "16px Helvetica";
+			ctx.fillText("Round win", 135, 355);
 			++round;
 			didWin();
 			break;
@@ -1536,6 +1542,9 @@ function useResult() {
 			ctx.fillStyle = "Gold";
 			yourHP -= betAmount;
 			ctx.fillText("Your HP: " + yourHP, 25, 880);
+			ctx.textAlign = "center";
+			ctx.font = "16px Helvetica";
+			ctx.fillText("Round loss", 135, 355);
 			++round;
 			didWin();
 			break;
@@ -1543,6 +1552,9 @@ function useResult() {
 		case "multiply":
 			ctx.fillStyle = "Gold";
 			betAmount = betAmount * 2;
+			ctx.textAlign = "center";
+			ctx.font = "16px Helvetica";
+			ctx.fillText("Multiplier (x2)", 135, 355);
 			takeTurn();
 			break;
 		// Degrades both players HP
@@ -1554,6 +1566,9 @@ function useResult() {
 			yourHP -= Math.floor(betAmount / 2);
 			ctx.fillText("Their HP: " + theirHP, 25, 30);
 			ctx.fillText("Your HP: " + yourHP, 25, 880);
+			ctx.textAlign = "center";
+			ctx.font = "16px Helvetica";
+			ctx.fillText("These are unrelated", 135, 355);
 			++round;
 			didWin();
 	}
