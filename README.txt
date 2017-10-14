@@ -6,6 +6,8 @@ The 3 main CSS3 features used in the project is visibility, customization of but
 
 You will find no other project on par with this game's creativity and sheer number of switch statements
 
+The cards are a combination of Google Image searches and GIMP (for sizing and drawing purposes)
+
 Easily the hardest part to implement in this game was card selection. When using auto margins on the canvas, it messes with where the browser thinks the mouse is clicking
 
 You also find the game has a significant amount of JavaScript, try to look at the file and not think that it is massively ugly and beautiful at the same time (mostly ugly)
