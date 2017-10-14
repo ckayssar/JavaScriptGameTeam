@@ -19,6 +19,7 @@ var resultText = "";
 var resultTextLine2 = "";
 var yourCardText = "";
 var AICardText = "";
+var multiply = 0;
 
 // Images and cards
 var cardBack = new Image();
@@ -284,6 +285,7 @@ function coinToss() {
 // This selects the AI's name
 function nameAI() {
 	rand = Math.floor(Math.random() * 10);
+	theirName = "Their Name: ";
 	switch (rand) {
 		case 0:
 			theirName += "Gilgamesh the Destroyer";
@@ -705,8 +707,8 @@ function makeResult() {
 				// Domino's case
 				case 11:
 					turnResult = "loss";
-					resultText = "You won't remember the exam after";
-					resultTextLine2 = "this pizza";
+					resultText = "You won't remember the exam";
+					resultTextLine2 = "after this pizza";
 					break;
 				// Prof case
 				case 12:
@@ -790,8 +792,8 @@ function makeResult() {
 				// Domino's case
 				case 11:
 					turnResult = "multiply";
-					resultText = "Gotta avoid Mines Market somehow";
-					resultTextLine2 = "";
+					resultText = "Gotta avoid Mines Market"; 
+					resultTextLine2 = "somehow";
 					break;
 				// Prof case
 				case 12:
@@ -1579,8 +1581,8 @@ function makeResult() {
 				// Freshman case
 				case 1:
 					turnResult = "multiply";
-					resultText = "Gotta avoid Mines Market somehow";
-					resultTextLine2 = "";
+					resultText = "Gotta avoid Mines Market"; 
+					resultTextLine2 = "somehow";
 					break;
 				// Senior case
 				case 2:
@@ -1731,6 +1733,7 @@ function makeResult() {
 				case 12:
 					turnResult = "multiply";
 					resultText = "I guess all my classes are F's now";
+					resultTextLine2 = "";
 			}
 	}
 	
@@ -1768,6 +1771,7 @@ function useResult() {
 			ctx.font = "16px Helvetica";
 			ctx.fillText("Round win", 135, 355);
 			++round;
+			multiply = 0;
 			didWin();
 			break;
 		// Degrades User HP
@@ -1779,17 +1783,24 @@ function useResult() {
 			ctx.textAlign = "center";
 			ctx.font = "16px Helvetica";
 			ctx.fillText("Round loss", 135, 355);
+			multiply = 0;
 			++round;
 			didWin();
 			break;
 		// Doubles Bet Amount
 		case "multiply":
-			ctx.fillStyle = "Gold";
-			betAmount = betAmount * 2;
-			ctx.textAlign = "center";
-			ctx.font = "16px Helvetica";
-			ctx.fillText("Multiplier (x2)", 135, 355);
-			takeTurn();
+			if (multiply == 6) {
+				fillHands();
+			}
+			else {
+				ctx.fillStyle = "Gold";
+				betAmount = betAmount * 2;
+				ctx.textAlign = "center";
+				ctx.font = "16px Helvetica";
+				ctx.fillText("Multiplier (x2)", 135, 355);
+				++multiply;
+				takeTurn();
+			}
 			break;
 		// Degrades both players HP
 		case "unrelate":
@@ -1803,6 +1814,7 @@ function useResult() {
 			ctx.textAlign = "center";
 			ctx.font = "16px Helvetica";
 			ctx.fillText("These are unrelated", 135, 355);
+			multiply = 0;
 			++round;
 			didWin();
 	}
@@ -1844,19 +1856,73 @@ function didWin() {
 		endGame();
 	}
 	
-	fillHands();
+	else {
+		fillHands();
+	}
 }
 
 // This ends the game
-function endGame() {
+function endGame() {	
 	switch(gameResult) {
 		case "win":
-			// Do a thing
+			$("#tossResult").css("background-image", "url('../images/winner.png')");
+			$("#tossResult p").html("You defeated the AI! Amazing!");
+			$("#tossResult").fadeIn(3000);
+			canClick = false;
 			break;
 		case "lose":
-			// Do a thing
+			$("#tossResult").css("background-image", "url('../images/lose.jpg')");
+			$("#tossResult p").html("You lost, you should try harder");
+			$("#tossResult").fadeIn(3000);
+			canClick = false;
 			break;
 		case "bothLose":
-			// Do a thing
+			$("#tossResult").css("background-image", "url('../images/tie.jpg')");
+			$("#tossResult p").html("You both lost, like if the <br> Browns played the Browns");
+			$("#tossResult").fadeIn(3000);
+			canClick = false;
 	}
+	$("#playAgain").css("visibility", "visible");
+	$("#quit").css("visibility", "visible");
+	
+	$("#playAgain").mouseenter(function(){
+		$("#playAgain").css("background-color", "Black");
+		$("#playAgain").css("color", "White");
+	});
+	$("#quit").mouseenter(function(){
+		$("#quit").css("background-color", "Black");
+		$("#quit").css("color", "White");
+	});
+	$("#playAgain").mouseleave(function(){
+		$("#playAgain").css("background-color", "rgb(75, 0, 0)");
+		$("#playAgain").css("color", "Gold");
+	});
+	$("#quit").mouseleave(function(){
+		$("#quit").css("background-color", "rgb(75, 0, 0)");
+		$("#quit").css("color", "Gold");
+	});
+	
+	// If play again is chosen
+	$("#playAgain").click(function(){
+		$("#tossResult").css("background-image", "url('../images/coinHead.png'");
+		$("#tossResult").css("visibility", "hidden");
+		$("#playAgain").css("visibility", "hidden");
+		$("#quit").css("visibility", "hidden");
+		ctx.fillStyle = "rgba(75, 0, 0, 1)";
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		theirHP = 100;
+		yourHP = 100;
+		userHand = [-1, -1, -1, -1, -1, -1];
+		AIHand = [-1, -1, -1, -1, -1, -1];
+		gameResult = "";
+		round = 0;
+		canClick = false;
+		multiply = 0;
+		coinChoose();
+	});
+	
+	// If tails is chosen
+	$("#quit").click(function(){
+		document.location.href = "https://www.youtube.com/watch?v=WchnQOa2oO8";
+	});
 }

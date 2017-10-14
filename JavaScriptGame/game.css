@@ -23,6 +23,32 @@
 	font-size: 20px;
 }
 
+#playAgain {
+	position: absolute;
+	left: 300px;
+	top: 200px;
+	width: 150px;
+	height: 60px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 24px;
+	visibility: hidden;
+}
+
+#quit {
+	position: absolute;
+	left: 500px;
+	top: 200px;
+	width: 150px;
+	height: 60px;
+	background-color: rgb(75, 0, 0);
+	color: Gold;
+	font-family: Helvetica;
+	font-size: 24px;
+	visibility: hidden;
+}
+
 #heads {
 	position: absolute;
 	left: 375px;
