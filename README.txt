@@ -1,11 +1,13 @@
-The index.html is the mainpage, but the game is found on an alternate page, theCSMCardGame.html
-
-The Highscore board is found in the theCSMCardGame.html file
-
 The README from Highscore API.zip doesn't mention "jquery-3.2.1.min.js", but its included anyway
-
-The CardIdentity.html explains all the cards
 
 I get an error in the HTML5 validator from the Highscore table
 
-Good luck, have fun!
+The 3 main CSS3 features used in the project is visibility, customization of buttons, and fading in and out
+
+You will find no other project on par with this game's creativity and sheer number of switch statements
+
+Easily the hardest part to implement in this game was card selection. When using auto margins on the canvas, it messes with where the browser thinks the mouse is clicking
+
+You also find the game has a significant amount of JavaScript, try to look at the file and not think that it is massively ugly and beautiful at the same time (mostly ugly)
+
+Good luck and have fun!

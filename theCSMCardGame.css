@@ -1,3 +1,141 @@
+body{
+    background-color: #ffffff;
+    width: 100%;
+    display: block;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    text-align: left;
+}
+header{
+    height: 150px;
+    background-color: #0000ff;
+    width: 100%;
+	margin-top: -24px;
+	margin-left: -8px;
+}
+h1{
+	text-align: center;
+	color: #ff0000;
+	font-size: 40px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%); 
+}
+nav{
+	width:100%;
+	margin: -20px 0px 0px -8px;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ff0000;
+}
+
+nav li {
+    float: left;
+	margin-left: 100px;
+}
+
+nav li a {
+	width: 160px;
+    display: block;
+    color: #ff0000;
+	background-color: #ffffff;
+    text-align: center;
+	font-size: 20px;
+    padding: 14px;
+    text-decoration: none;
+	border: 2px solid #000000;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+nav li a:hover {
+    background-color: #b3c100;
+	color: #ffffff;
+}
+nav li a.active{
+    background-color: #4CAF50;
+    color: white;
+}
+ section{
+	 width: 90%;
+	 height: auto;
+	 margin: auto;
+	 padding: 0px 20px 20px 20px;
+	 background-color: #e6e6e6;
+	 border: 2px solid #b3c100;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+h2, h3{
+	text-align: center;
+	font-family: "Time New Roman", serif;
+	font-size: 40px;
+	color: #ff0000;
+}
+#directions{
+	padding: 0px 20px 20px 20px;
+	background-color: #ffffff;
+	border: 2px solid #89c25e;
+	-webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+	position: relative;
+	background-image: url("images/bigstock-playing-cards.jpg");
+	background-size: 120px 90px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+}
+footer{
+	height: 110px;
+	margin-left: -8px;
+	color: #ffffff;
+    background-color: #0000ff;
+    padding: 5px 5px 5px 50px;
+	margin-top: 15px;
+}
+#d01{
+	padding-left: 34%;
+}
+#d01, #d02, #d03{
+	position: relative;
+	width: 125px;
+	height: 40px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	display: inline-block;
+}
+
+.cardicle{
+	background-color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
+	margin-top: 25px;
+	height: 250px;
+	padding: 25px;
+}
+
+#d1, #d2, #d3, #d4, #d5, #d5, #d6, #d7, #d8, #d9, #d10, #d11, #d12, #d13{
+	float: left;
+}
+
+h3{
+	text-align:center;
+	clear: right;
+	margin-left: 50px;
+	color: #ff0000;
+	font-family:"Time New Roman", serif;
+	font-size: 30px;
+	margin-top: 0px;
+}
+pre{
+	font-family: Arial, sans-serif;
+	font-size: 24px;
+}
+
 #myCanvas{
 	border: 2px solid #000000; 
 	margin: auto;
