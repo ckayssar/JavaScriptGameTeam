@@ -7,6 +7,7 @@
         <meta name="keywords" content="HTML">
 		<link rel="stylesheet" type="text/css" href="../index.css">
 		<link rel="stylesheet" type="text/css" href="game.css">
+		<link rel="stylesheet" href="../highscore.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>The CSM Card Game</title>
     </head>
@@ -55,6 +56,24 @@
 					<button id="betTen">10</button>
 				</div>
 			</div>
+			
+			<div id="highdiv">
+			<table id="hightable">
+				<tr>
+					<th>User</th>
+					<th>Score</th>
+				</tr>
+
+			</table>
+			<table id="myhightable">
+				<tr>
+					<th colspan="2">Your High Score</th>
+				</tr>
+				<tr id="myhighscore">
+					<td colspan="2">You don't have one yet!</td>
+				</tr>
+			</table>
+		</div>
 		</main>
 		
 		<footer>
@@ -65,6 +84,7 @@
 		</footer>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="HighscoreAPI.js"></script>
 		<script src="game.js"></script>
 	</body>
 </html>

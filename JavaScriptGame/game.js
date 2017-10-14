@@ -20,6 +20,7 @@ var resultTextLine2 = "";
 var yourCardText = "";
 var AICardText = "";
 var multiply = 0;
+var score = 0;
 
 // Images and cards
 var cardBack = new Image();
@@ -202,6 +203,7 @@ function getPosition(e) {
 	
 // Player chooses heads or tails
 function coinChoose() {
+	update_scores();
 	// Text for UI
 	ctx.fillStyle = "Gold";
 	ctx.font = "40px Helvetica";
@@ -1868,19 +1870,27 @@ function endGame() {
 			$("#tossResult").css("background-image", "url('../images/winner.png')");
 			$("#tossResult p").html("You defeated the AI! Amazing!");
 			$("#tossResult").fadeIn(3000);
+			score = (100 - round) * yourHP * 10;
 			canClick = false;
+			highscore(score);
 			break;
 		case "lose":
 			$("#tossResult").css("background-image", "url('../images/lose.jpg')");
 			$("#tossResult p").html("You lost, you should try harder");
 			$("#tossResult").fadeIn(3000);
+			score = (100 - round) * theirHP * 10 * -1;
 			canClick = false;
+			highscore(score);
 			break;
 		case "bothLose":
 			$("#tossResult").css("background-image", "url('../images/tie.jpg')");
 			$("#tossResult p").html("You both lost, like if the <br> Browns played the Browns");
 			$("#tossResult").fadeIn(3000);
+			--yourHP;
+			--theirHP;
+			score = (100 - round) * yourHP * theirHP * 100 * -1;
 			canClick = false;
+			highscore(score);
 	}
 	$("#playAgain").css("visibility", "visible");
 	$("#quit").css("visibility", "visible");
