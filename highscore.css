@@ -1,0 +1,28 @@
+
+#hightable,#myhightable{
+    width:50%;
+    margin:auto;
+    margin-top:8px;
+    text-align: center;
+}
+
+#hightable td,#myhightable td{
+    border: 2px solid #89c25e;
+}
+
+#highlogo{
+    width: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#highdiv{
+    background-color: #ffffff;
+    width:50%;
+    margin:auto;
+    border-radius: 15px;
+    padding:8px;
+    margin-top: 16px;
+	border: 2px solid #89c25e
+}
