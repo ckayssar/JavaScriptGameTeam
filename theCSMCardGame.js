@@ -37,20 +37,20 @@ var parking = new Image();
 var GPA = new Image();
 var domino = new Image();
 var prof = new Image();
-cardBack.src = "../images/cardBack.jpg";
-exam.src = "../images/cardExam.jpg";
-freshman.src = "../images/cardFreshman.jpg";
-senior.src = "../images/cardSenior.jpg";
-debt.src = "../images/cardDebt.jpg";
-dog.src = "../images/cardDog.jpg";
-market.src = "../images/cardMarket.jpg";
-office.src = "../images/cardOffice.jpg";
-snow.src = "../images/cardSnow.jpg";
-scholarship.src = "../images/cardScholar.jpg";
-parking.src = "../images/cardParking.jpg";
-GPA.src = "../images/cardGPA.jpg";
-domino.src = "../images/cardDomino.jpg";
-prof.src = "../images/cardProf.jpg";
+cardBack.src = "images/cardBack.jpg";
+exam.src = "images/cardExam.jpg";
+freshman.src = "images/cardFreshman.jpg";
+senior.src = "images/cardSenior.jpg";
+debt.src = "images/cardDebt.jpg";
+dog.src = "images/cardDog.jpg";
+market.src = "images/cardMarket.jpg";
+office.src = "images/cardOffice.jpg";
+snow.src = "images/cardSnow.jpg";
+scholarship.src = "images/cardScholar.jpg";
+parking.src = "images/cardParking.jpg";
+GPA.src = "images/cardGPA.jpg";
+domino.src = "images/cardDomino.jpg";
+prof.src = "images/cardProf.jpg";
 
 // The deck
 var deck = [exam, freshman, senior, debt, dog, market, office, snow, scholarship, parking, GPA, domino, prof];
@@ -266,7 +266,7 @@ function coinToss() {
 	
 	// Tails
 	else {
-		$("#tossResult").css("background-image", "url('../images/coinTail.png')");
+		$("#tossResult").css("background-image", "url('images/coinTail.png')");
 		if (toss === "tails") {
 			userBet = true;
 			$("#tossResult p").html("The coin is tails. You bet first.");
@@ -1869,7 +1869,7 @@ function endGame() {
 	switch(gameResult) {
 		case "win":
 			score = (100 - round) * yourHP * 10;
-			$("#tossResult").css("background-image", "url('../images/winner.png')");
+			$("#tossResult").css("background-image", "url('images/winner.png')");
 			$("#tossResult p").html("You defeated the AI! Amazing! <br> Your score is: " + score);
 			$("#tossResult").fadeIn(3000);
 			canClick = false;
@@ -1877,7 +1877,7 @@ function endGame() {
 			break;
 		case "lose":
 			score = (100 - round) * theirHP * 10 * -1;
-			$("#tossResult").css("background-image", "url('../images/lose.jpg')");
+			$("#tossResult").css("background-image", "url('images/lose.jpg')");
 			$("#tossResult p").html("You lost, you should try harder <br> Your score is: " + score);
 			$("#tossResult").fadeIn(3000);
 			canClick = false;
@@ -1887,7 +1887,7 @@ function endGame() {
 			--yourHP;
 			--theirHP;
 			score = (100 - round) * yourHP * theirHP * 100 * -1;
-			$("#tossResult").css("background-image", "url('../images/tie.jpg')");
+			$("#tossResult").css("background-image", "url('images/tie.jpg')");
 			$("#tossResult p").html("You both lost, like if the <br> Browns played the Browns <br> Your score is: " + score);
 			$("#tossResult").fadeIn(3000);
 			canClick = false;
@@ -1915,7 +1915,7 @@ function endGame() {
 	
 	// If play again is chosen
 	$("#playAgain").click(function(){
-		$("#tossResult").css("background-image", "url('../images/coinHead.png'");
+		$("#tossResult").css("background-image", "url('images/coinHead.png'");
 		$("#tossResult").css("visibility", "hidden");
 		$("#playAgain").css("visibility", "hidden");
 		$("#quit").css("visibility", "hidden");
